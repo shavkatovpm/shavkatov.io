@@ -5,28 +5,78 @@ const pathname = Astro.url.pathname;
 <header>
   <nav class="container">
     <a href="/" class="logo">shavkatov.io</a>
-    <div class="nav-socials">
-      <a href="https://t.me/shavkatovio" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21.2 4.4L2.4 10.9c-.6.2-.6.7 0 .9l4.8 1.5 1.8 5.8c.2.5.7.5.9.2l2.6-2.7 5.1 3.8c.5.4 1 .2 1.1-.4L22.3 5.3c.2-.7-.4-1.2-1.1-.9z"/>
-          <path d="M9.2 13.3l8.4-6.2"/>
-        </svg>
-      </a>
-      <a href="https://instagram.com/shavkatov.io" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5"/>
-          <circle cx="12" cy="12" r="5"/>
-          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-        </svg>
-      </a>
+    <div class="nav-right">
+      <button class="lang-btn" id="langToggle" aria-label="Switch language">En</button>
+      <div class="nav-socials">
+        <button class="social-btn" data-url="https://t.me/shavkatovio" data-name="Telegram" aria-label="Telegram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.2 4.4L2.4 10.9c-.6.2-.6.7 0 .9l4.8 1.5 1.8 5.8c.2.5.7.5.9.2l2.6-2.7 5.1 3.8c.5.4 1 .2 1.1-.4L22.3 5.3c.2-.7-.4-1.2-1.1-.9z"/>
+            <path d="M9.2 13.3l8.4-6.2"/>
+          </svg>
+        </button>
+        <button class="social-btn" data-url="https://instagram.com/shavkatov.io" data-name="Instagram" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </nav>
 </header>
 
+<!-- Social confirm modal -->
+<div class="modal-overlay" id="socialModal">
+  <div class="modal">
+    <p>Open <span id="modalName"></span>?</p>
+    <div class="modal-actions">
+      <button id="modalCancel">Cancel</button>
+      <a id="modalConfirm" href="#" target="_blank" rel="noopener noreferrer">Continue</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Social modal
+  const modal = document.getElementById('socialModal');
+  const modalName = document.getElementById('modalName');
+  const modalConfirm = document.getElementById('modalConfirm') as HTMLAnchorElement;
+  const modalCancel = document.getElementById('modalCancel');
+
+  document.querySelectorAll('.social-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const url = (btn as HTMLElement).dataset.url!;
+      const name = (btn as HTMLElement).dataset.name!;
+      modalName!.textContent = name;
+      modalConfirm!.href = url;
+      modal!.classList.add('open');
+    });
+  });
+
+  modalCancel?.addEventListener('click', () => modal!.classList.remove('open'));
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+  modalConfirm?.addEventListener('click', () => modal!.classList.remove('open'));
+
+  // Language toggle - shows current language, click to switch
+  const langBtn = document.getElementById('langToggle')!;
+  const savedLang = localStorage.getItem('lang') || 'en';
+  langBtn.textContent = savedLang === 'en' ? 'En' : 'Uz';
+
+  langBtn.addEventListener('click', () => {
+    const current = localStorage.getItem('lang') || 'en';
+    const next = current === 'en' ? 'uz' : 'en';
+    localStorage.setItem('lang', next);
+    langBtn.textContent = next === 'en' ? 'En' : 'Uz';
+    document.dispatchEvent(new CustomEvent('langchange', { detail: next }));
+  });
+</script>
+
 <style>
   header {
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.25rem 0;
   }
 
   nav {
@@ -41,19 +91,124 @@ const pathname = Astro.url.pathname;
     color: #767676;
   }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: #767676;
+    transition: color 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .lang-btn:hover {
+    color: var(--color-text);
+  }
+
   .nav-socials {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
     align-items: center;
   }
 
-  .nav-socials a {
-    color: var(--color-secondary);
+  .social-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #767676;
     transition: color 0.2s ease;
     display: flex;
+    align-items: center;
   }
 
-  .nav-socials a:hover {
+  .social-btn:hover {
     color: var(--color-text);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal {
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 1.25rem 1.75rem;
+    background: #0a0a0a;
+    text-align: center;
+    max-width: 260px;
+    width: 90%;
+  }
+
+  .modal p {
+    color: #999999;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+  }
+
+  .modal #modalName {
+    color: var(--color-text);
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .modal-actions button,
+  .modal-actions a {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 0.8rem;
+    padding: 0.35rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  #modalCancel {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #767676;
+  }
+
+  #modalCancel:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-text);
+  }
+
+  #modalConfirm {
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    color: var(--color-text);
+  }
+
+  #modalConfirm:hover {
+    background: rgba(255, 255, 255, 0.12);
   }
 </style>
