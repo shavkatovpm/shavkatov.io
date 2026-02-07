@@ -59,7 +59,7 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
           setTimeout(() => {
             char.classList.add('visible');
             if (i === chars.length - 1) setTimeout(resolve, 400);
-          }, startDelay + i * 70);
+          }, startDelay + i * 90);
         });
       });
     }
@@ -138,17 +138,29 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
   }
 
   .name-char.visible {
-    animation: charReveal 0.5s ease-out forwards;
+    animation: charBlurIn 0.45s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   }
 
-  @keyframes charReveal {
+  @keyframes charBlurIn {
     0% {
       opacity: 0;
-      filter: blur(8px);
+      color: transparent;
+      text-shadow: 0 0 8px #999999;
+    }
+    25% {
+      opacity: 1;
+      color: transparent;
+      text-shadow: 0 0 5px #999999;
+    }
+    55% {
+      opacity: 1;
+      color: #999999;
+      text-shadow: 0 0 0px #999999;
     }
     100% {
       opacity: 1;
-      filter: blur(0);
+      color: #999999;
+      text-shadow: 0 0 0px #999999;
     }
   }
 
@@ -158,7 +170,7 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
     justify-content: center;
     opacity: 0;
     filter: blur(10px);
-    transition: opacity 0.8s ease-out, filter 0.8s ease-out;
+    transition: opacity 0.4s ease-out, filter 0.4s ease-out;
   }
 
   .hero-links.visible {
@@ -181,7 +193,7 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
   :global(header) {
     opacity: 0;
     filter: blur(10px);
-    transition: opacity 0.8s ease-out, filter 0.8s ease-out;
+    transition: opacity 0.4s ease-out, filter 0.4s ease-out;
     position: relative;
     z-index: 2;
   }
