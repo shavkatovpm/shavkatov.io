@@ -57,7 +57,8 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
       return new Promise((resolve) => {
         chars.forEach((char, i) => {
           setTimeout(() => {
-            char.classList.add('visible');
+            char.style.opacity = '1';
+            void char.offsetWidth;
             if (i === chars.length - 1) setTimeout(resolve, 400);
           }, startDelay + i * 90);
         });
@@ -129,26 +130,13 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
   }
 
   .name-char-wrap {
-    display: inline-block;
+    display: inline;
   }
 
   .name-char {
-    display: inline-block;
+    display: inline;
     opacity: 0;
-    will-change: opacity;
-  }
-
-  .name-char.visible {
-    animation: charFadeIn 0.45s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  }
-
-  @keyframes charFadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+    transition: opacity 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 
   .hero-links {
