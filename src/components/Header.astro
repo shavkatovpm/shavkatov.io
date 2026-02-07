@@ -1,0 +1,42 @@
+---
+const pathname = Astro.url.pathname;
+---
+
+<header>
+  <nav class="container">
+    <a href="/" class="logo">shavkatov.io</a>
+  </nav>
+</header>
+
+<style>
+  header {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--color-text);
+  }
+</style>

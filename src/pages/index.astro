@@ -1,0 +1,162 @@
+---
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+
+const heroLines = ["Shavkatov", "Fayzulloh"];
+---
+
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Shavkatov Fayzulloh - Project Manager</title>
+  <meta name="description" content="Shavkatov Fayzulloh - Personal blog about technology and development" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="hero-page">
+  <Header />
+  <section class="hero">
+    <div class="hero-content container">
+      <h1 class="hero-name" aria-label="Shavkatov Fayzulloh">
+        <span class="name-line">{heroLines[0].split('').map((char) => (
+          <span class="name-char-wrap" data-line="1"><span class="name-char">{char}</span></span>
+        ))}</span>
+        <span class="name-line">{heroLines[1].split('').map((char) => (
+          <span class="name-char-wrap" data-line="2"><span class="name-char">{char}</span></span>
+        ))}</span>
+      </h1>
+      <div class="hero-links" id="heroLinks">
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const line1Chars = document.querySelectorAll('[data-line="1"] .name-char');
+    const line2Chars = document.querySelectorAll('[data-line="2"] .name-char');
+    const heroLinks = document.getElementById('heroLinks');
+
+    function revealChars(chars, startDelay) {
+      return new Promise((resolve) => {
+        chars.forEach((char, i) => {
+          setTimeout(() => {
+            char.classList.add('visible');
+            if (i === chars.length - 1) setTimeout(resolve, 400);
+          }, startDelay + i * 70);
+        });
+      });
+    }
+
+    const headerEl = document.querySelector('header');
+
+    revealChars(line1Chars, 750).then(() => {
+      return revealChars(line2Chars, 300);
+    }).then(() => {
+      setTimeout(() => {
+        heroLinks.classList.add('visible');
+        headerEl?.classList.add('visible');
+      }, 300);
+    });
+  });
+</script>
+
+<style>
+  .hero-page {
+    height: 100dvh;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .hero {
+    height: calc(100dvh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-name {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    white-space: nowrap;
+    color: #999999;
+  }
+
+  .name-line {
+    display: inline;
+  }
+
+  .name-line:first-child::after {
+    content: '\00a0';
+  }
+
+  .name-char-wrap {
+    display: inline-block;
+  }
+
+  .name-char {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 0.5s ease-out, filter 0.5s ease-out;
+  }
+
+  .name-char.visible {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.8s ease-out, filter 0.8s ease-out;
+  }
+
+  .hero-links.visible {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  .hero-links a {
+    color: var(--color-secondary);
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.2s ease;
+  }
+
+  .hero-links a:hover {
+    color: var(--color-text);
+  }
+
+  :global(header) {
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.8s ease-out, filter 0.8s ease-out;
+  }
+
+  :global(header.visible) {
+    opacity: 1;
+    filter: blur(0px);
+  }
+</style>

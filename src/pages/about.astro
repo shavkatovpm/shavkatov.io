@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Men haqimda - Shavkatov"
+  description="Shavkatov haqida - dasturchi va texnologiya ishqibozi"
+>
+  <article class="about">
+    <h1>Men haqimda</h1>
+
+    <p>
+      Salom! Men Shavkatov. Bu blogda men texnologiya, dasturlash va shaxsiy
+      tajribalarim haqida yozaman.
+    </p>
+
+    <p>
+      Bu yerni o'zingiz haqingizda ma'lumot bilan to'ldiring. Quyidagi
+      bo'limlarni qo'shishingiz mumkin:
+    </p>
+
+    <ul>
+      <li>Qiziqishlaringiz</li>
+      <li>Tajribangiz</li>
+      <li>Maqsadlaringiz</li>
+    </ul>
+
+    <h2>Aloqa</h2>
+    <p>
+      Men bilan bog'lanish uchun quyidagi platformalardan foydalanishingiz mumkin:
+    </p>
+
+    <ul class="social-links">
+      <li><a href="https://github.com/shavkatov" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://twitter.com/shavkatov" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="mailto:hello@shavkatov.io">Email</a></li>
+    </ul>
+  </article>
+</BaseLayout>
+
+<style>
+  .about {
+    padding: 2rem 0;
+  }
+
+  .about h1 {
+    margin-bottom: 2rem;
+  }
+
+  .about h2 {
+    margin-top: 2rem;
+  }
+
+  .social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .social-links a {
+    color: var(--color-secondary);
+  }
+
+  .social-links a:hover {
+    color: var(--color-text);
+  }
+</style>
