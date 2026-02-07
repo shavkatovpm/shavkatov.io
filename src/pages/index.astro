@@ -115,9 +115,10 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
     font-weight: 400;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    line-height: 1.4;
     white-space: nowrap;
     color: #999999;
+    overflow: visible;
   }
 
   .name-line {
@@ -136,10 +137,9 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
   .name-char {
     display: inline-block;
     opacity: 0;
-    filter: blur(6px);
-    transition: opacity 0.3s ease-out, filter 0.6s ease-out;
-    padding: 0.15em 0;
-    margin: -0.15em 0;
+    filter: blur(4px);
+    transition: opacity 0.35s ease-out, filter 0.5s ease-out;
+    will-change: filter, opacity;
   }
 
   .name-char.visible {
