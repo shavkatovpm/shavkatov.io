@@ -55,7 +55,6 @@ const name = "Shavkatov Fayzulloh";
       setTimeout(() => {
         (char as HTMLElement).style.opacity = '1';
         (char as HTMLElement).style.transform = 'translateY(0)';
-        (char as HTMLElement).style.filter = 'blur(0px)';
       }, 600 + i * charDuration);
     });
 
@@ -115,8 +114,7 @@ const name = "Shavkatov Fayzulloh";
     display: inline-block;
     opacity: 0;
     transform: translateY(-20px);
-    filter: blur(8px);
-    transition: opacity 0.08s ease-out, transform 0.08s ease-out, filter 0.4s ease-out;
+    transition: opacity 0.08s ease-out, transform 0.08s ease-out;
   }
 
   .char-space {
