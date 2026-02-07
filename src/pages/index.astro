@@ -57,10 +57,7 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
       return new Promise((resolve) => {
         chars.forEach((char, i) => {
           setTimeout(() => {
-            char.style.opacity = '1';
-            char.style.color = '#999999';
-            char.style.textShadow = '0 0 0px #999999';
-            void char.offsetWidth;
+            char.classList.add('visible');
             if (i === chars.length - 1) setTimeout(resolve, 400);
           }, startDelay + i * 90);
         });
@@ -118,7 +115,7 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
     font-weight: 400;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
-    line-height: 1.4;
+    line-height: 1.1;
     white-space: nowrap;
     color: #999999;
   }
@@ -132,15 +129,34 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
   }
 
   .name-char-wrap {
-    display: inline;
+    display: inline-block;
   }
 
   .name-char {
-    display: inline;
+    display: inline-block;
     opacity: 0;
-    color: transparent;
-    text-shadow: 0 0 16px #999999;
-    transition: opacity 0.6s ease-out, color 0.6s ease-out, text-shadow 0.5s ease-out;
+  }
+
+  .name-char.visible {
+    animation: charBlurIn 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  }
+
+  @keyframes charBlurIn {
+    0% {
+      opacity: 0;
+      color: transparent;
+      text-shadow: 0 0 8px #999999;
+    }
+    30% {
+      opacity: 1;
+      color: transparent;
+      text-shadow: 0 0 6px #999999;
+    }
+    100% {
+      opacity: 1;
+      color: #999999;
+      text-shadow: 0 0 0px #999999;
+    }
   }
 
   .hero-links {
@@ -148,7 +164,7 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
     gap: 2rem;
     justify-content: center;
     opacity: 0;
-    filter: blur(14px);
+    filter: blur(10px);
     transition: opacity 0.8s ease-out, filter 0.8s ease-out;
   }
 
@@ -171,7 +187,7 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
 
   :global(header) {
     opacity: 0;
-    filter: blur(14px);
+    filter: blur(10px);
     transition: opacity 0.8s ease-out, filter 0.8s ease-out;
     position: relative;
     z-index: 2;
