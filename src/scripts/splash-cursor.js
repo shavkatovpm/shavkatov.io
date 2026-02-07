@@ -9,8 +9,8 @@ export function initSplashCursor(canvas) {
     PRESSURE: 0.1,
     PRESSURE_ITERATIONS: 20,
     CURL: 3,
-    SPLAT_RADIUS: 0.1,
-    SPLAT_FORCE: 3000,
+    SPLAT_RADIUS: 0.25,
+    SPLAT_FORCE: 5000,
     SHADING: true,
     COLOR_UPDATE_SPEED: 10,
     BACK_COLOR: { r: 0, g: 0, b: 0 },
@@ -694,7 +694,7 @@ export function initSplashCursor(canvas) {
 
   // Grayscale white/gray colors only, 50% intensity
   function generateColor() {
-    let brightness = 0.04 + Math.random() * 0.04;
+    let brightness = 0.02 + Math.random() * 0.02;
     return { r: brightness, g: brightness, b: brightness };
   }
 
