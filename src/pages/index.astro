@@ -59,21 +59,21 @@ const heroLines = ["Shavkatov", "Fayzulloh"];
           setTimeout(() => {
             char.style.opacity = '1';
             void char.offsetWidth;
-            if (i === chars.length - 1) setTimeout(resolve, 400);
-          }, startDelay + i * 90);
+            if (i === chars.length - 1) setTimeout(resolve, 250);
+          }, startDelay + i * 60);
         });
       });
     }
 
     const headerEl = document.querySelector('header');
 
-    revealChars(line1Chars, 750).then(() => {
-      return revealChars(line2Chars, 300);
+    revealChars(line1Chars, 400).then(() => {
+      return revealChars(line2Chars, 150);
     }).then(() => {
       setTimeout(() => {
         heroLinks.classList.add('visible');
         headerEl?.classList.add('visible');
-      }, 300);
+      }, 150);
     });
   });
 </script>
