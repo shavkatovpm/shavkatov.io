@@ -742,21 +742,13 @@ export function initSplashCursor(canvas) {
     for (let i = 0; i < touches.length; i++) { p.down = false; }
   }
 
-  window.addEventListener('mousedown', handleMouseDown);
   window.addEventListener('mousemove', handleMouseMove);
-  window.addEventListener('touchstart', handleTouchStart);
-  window.addEventListener('touchmove', handleTouchMove, false);
-  window.addEventListener('touchend', handleTouchEnd);
 
   updateFrame();
 
   return () => {
     isActive = false;
     if (animationFrameId) cancelAnimationFrame(animationFrameId);
-    window.removeEventListener('mousedown', handleMouseDown);
     window.removeEventListener('mousemove', handleMouseMove);
-    window.removeEventListener('touchstart', handleTouchStart);
-    window.removeEventListener('touchmove', handleTouchMove);
-    window.removeEventListener('touchend', handleTouchEnd);
   };
 }
