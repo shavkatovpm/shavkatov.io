@@ -92,17 +92,22 @@ import '../styles/global.css';
   }
 
   .hero-page {
-    height: 100dvh;
     margin: 0;
     overflow: hidden;
+    position: fixed;
+    inset: 0;
   }
 
   .hero {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: calc(100dvh - 60px);
-    padding-bottom: 20dvh;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 10%;
   }
 
   .hero-content {
