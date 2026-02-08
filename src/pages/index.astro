@@ -52,21 +52,26 @@ import '../styles/global.css';
     if (isFirstLoad) {
       // Saytga yangi kirilganda: animatsiya bilan
       isFirstLoad = false;
+      // Header ni yashiramiz, keyin animatsiya bilan ko'rsatamiz
+      headerEl?.style.setProperty('opacity', '0');
+      headerEl?.style.setProperty('filter', 'blur(5px)');
+      headerEl?.style.setProperty('transition', 'opacity 0.8s ease-out, filter 0.8s ease-out');
+
       setTimeout(() => {
         heroName.classList.add('visible');
       }, 600);
 
       setTimeout(() => {
         heroLinks?.classList.add('visible');
-        headerEl?.classList.add('visible');
+        headerEl?.style.setProperty('opacity', '1');
+        headerEl?.style.setProperty('filter', 'blur(0px)');
       }, 1600);
     } else {
-      // Ichki sahifadan qaytganda: darhol ko'rsatish (View Transition fade o'zi ishlaydi)
+      // Ichki sahifadan qaytganda: hero elementlarini darhol ko'rsatish
+      // Header transition:persist tufayli o'z joyida qoladi
       heroName.style.cssText = 'opacity:1;filter:none';
       heroLinks?.style.setProperty('opacity', '1');
       heroLinks?.style.setProperty('filter', 'none');
-      headerEl?.style.setProperty('opacity', '1');
-      headerEl?.style.setProperty('filter', 'none');
     }
 
     // Til o'zgarganda About/Haqida almashadi
@@ -162,15 +167,5 @@ import '../styles/global.css';
     color: var(--color-text);
   }
 
-  :global(header) {
-    opacity: 0;
-    filter: blur(5px);
-    transition: opacity 0.8s ease-out, filter 0.8s ease-out;
-  }
-
-  :global(header.visible) {
-    opacity: 1;
-    filter: blur(0px);
-  }
 
 </style>

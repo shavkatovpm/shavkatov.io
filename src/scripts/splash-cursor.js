@@ -743,6 +743,8 @@ export function initSplashCursor(canvas) {
   }
 
   window.addEventListener('mousemove', handleMouseMove);
+  window.addEventListener('touchmove', handleTouchMove, false);
+  window.addEventListener('touchend', handleTouchEnd);
 
   updateFrame();
 
@@ -750,5 +752,7 @@ export function initSplashCursor(canvas) {
     isActive = false;
     if (animationFrameId) cancelAnimationFrame(animationFrameId);
     window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('touchmove', handleTouchMove);
+    window.removeEventListener('touchend', handleTouchEnd);
   };
 }
