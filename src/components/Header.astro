@@ -62,14 +62,14 @@ const pathname = Astro.url.pathname;
 
   // Language toggle - shows current language, click to switch
   const langBtn = document.getElementById('langToggle')!;
-  const savedLang = localStorage.getItem('lang') || 'en';
-  langBtn.textContent = savedLang === 'en' ? 'En' : 'Uz';
+  const savedLang = localStorage.getItem('lang') || 'uz';
+  langBtn.textContent = savedLang === 'en' ? '🇬🇧' : '🇺🇿';
 
   langBtn.addEventListener('click', () => {
-    const current = localStorage.getItem('lang') || 'en';
+    const current = localStorage.getItem('lang') || 'uz';
     const next = current === 'en' ? 'uz' : 'en';
     localStorage.setItem('lang', next);
-    langBtn.textContent = next === 'en' ? 'En' : 'Uz';
+    langBtn.textContent = next === 'en' ? '🇬🇧' : '🇺🇿';
     document.dispatchEvent(new CustomEvent('langchange', { detail: next }));
   });
 </script>
@@ -88,7 +88,7 @@ const pathname = Astro.url.pathname;
   .logo {
     font-weight: 500;
     font-size: 1.1rem;
-    color: #767676;
+    color: #888888;
   }
 
   .nav-right {
@@ -102,15 +102,16 @@ const pathname = Astro.url.pathname;
     border: none;
     cursor: pointer;
     padding: 0;
-    font-family: 'Poppins', system-ui, sans-serif;
-    font-size: 0.8rem;
-    color: #767676;
-    transition: color 0.2s ease;
-    letter-spacing: 0.02em;
+    font-size: 1rem;
+    line-height: 1;
+    filter: grayscale(1);
+    opacity: 0.6;
+    transition: opacity 0.2s ease, filter 0.2s ease;
   }
 
   .lang-btn:hover {
-    color: var(--color-text);
+    opacity: 1;
+    filter: grayscale(0.5);
   }
 
   .nav-socials {
@@ -124,7 +125,7 @@ const pathname = Astro.url.pathname;
     border: none;
     cursor: pointer;
     padding: 0;
-    color: #767676;
+    color: #888888;
     transition: color 0.2s ease;
     display: flex;
     align-items: center;
@@ -158,14 +159,14 @@ const pathname = Astro.url.pathname;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 10px;
     padding: 1.25rem 1.75rem;
-    background: #0a0a0a;
+    background: #000000;
     text-align: center;
     max-width: 260px;
     width: 90%;
   }
 
   .modal p {
-    color: #999999;
+    color: #888888;
     font-size: 0.9rem;
     margin: 0 0 1rem;
   }
@@ -194,7 +195,7 @@ const pathname = Astro.url.pathname;
   #modalCancel {
     background: none;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #767676;
+    color: #888888;
   }
 
   #modalCancel:hover {

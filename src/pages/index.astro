@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import '../styles/global.css';
 ---
@@ -7,7 +8,7 @@ import '../styles/global.css';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/logo.png" />
   <title>Shavkatov Fayzulloh - Project Manager</title>
   <meta name="description" content="Shavkatov Fayzulloh - Personal blog about technology and development" />
   <meta name="theme-color" content="#000000" />
@@ -15,6 +16,7 @@ import '../styles/global.css';
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <ViewTransitions />
 </head>
 <body class="hero-page">
   <canvas id="splashCanvas"></canvas>
@@ -23,7 +25,7 @@ import '../styles/global.css';
     <div class="hero-content container">
       <h1 class="hero-name" id="heroName">Shavkatov Fayzulloh</h1>
       <div class="hero-links" id="heroLinks">
-        <a href="/about">About</a>
+        <a href="/about" id="aboutLink">Haqida</a>
         <a href="/blog">Blog</a>
       </div>
     </div>
@@ -34,25 +36,48 @@ import '../styles/global.css';
 <script>
   import { initSplashCursor } from '../scripts/splash-cursor.js';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('splashCanvas') as HTMLCanvasElement;
-    initSplashCursor(canvas);
+  let isFirstLoad = true;
 
+  function setup() {
+    // Faqat bosh sahifada ishlaydi
     const heroName = document.getElementById('heroName');
+    if (!heroName) return;
+
+    const canvas = document.getElementById('splashCanvas') as HTMLCanvasElement;
+    if (canvas) initSplashCursor(canvas);
+
     const heroLinks = document.getElementById('heroLinks');
     const headerEl = document.querySelector('header');
 
-    // Ism: blur + fade in
-    setTimeout(() => {
-      heroName?.classList.add('visible');
-    }, 600);
+    if (isFirstLoad) {
+      // Saytga yangi kirilganda: animatsiya bilan
+      isFirstLoad = false;
+      setTimeout(() => {
+        heroName.classList.add('visible');
+      }, 600);
 
-    // Links va header: ism animatsiyasi to'liq tugagach (600ms delay + 1s transition)
-    setTimeout(() => {
-      heroLinks?.classList.add('visible');
-      headerEl?.classList.add('visible');
-    }, 1600);
-  });
+      setTimeout(() => {
+        heroLinks?.classList.add('visible');
+        headerEl?.classList.add('visible');
+      }, 1600);
+    } else {
+      // Ichki sahifadan qaytganda: darhol ko'rsatish
+      heroName.classList.add('no-transition', 'visible');
+      heroLinks?.classList.add('no-transition', 'visible');
+      headerEl?.classList.add('no-transition', 'visible');
+    }
+
+    // Til o'zgarganda About/Haqida almashadi
+    const aboutLink = document.getElementById('aboutLink');
+    const updateAboutText = (lang: string) => {
+      if (aboutLink) aboutLink.textContent = lang === 'en' ? 'About' : 'Haqida';
+    };
+    updateAboutText(localStorage.getItem('lang') || 'uz');
+    document.addEventListener('langchange', (e: any) => updateAboutText(e.detail));
+  }
+
+  // astro:page-load har safar ishlaydi — ham birinchi yuklashda, ham View Transition keyin
+  document.addEventListener('astro:page-load', setup);
 </script>
 
 <style>
@@ -94,7 +119,7 @@ import '../styles/global.css';
     letter-spacing: -0.02em;
     line-height: 1.1;
     white-space: nowrap;
-    color: #999999;
+    color: #888888;
     opacity: 0;
     filter: blur(10px);
     transition: opacity 1s ease-out, filter 1s ease-out;
@@ -120,7 +145,7 @@ import '../styles/global.css';
   }
 
   .hero-links a {
-    color: #767676;
+    color: #888888;
     font-size: 0.95rem;
     font-family: 'Poppins', sans-serif;
     transition: color 0.2s ease;
@@ -139,5 +164,10 @@ import '../styles/global.css';
   :global(header.visible) {
     opacity: 1;
     filter: blur(0px);
+  }
+
+  .no-transition,
+  :global(header.no-transition) {
+    transition: none !important;
   }
 </style>

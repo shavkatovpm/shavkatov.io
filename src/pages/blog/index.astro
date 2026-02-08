@@ -10,89 +10,111 @@ const posts = (await getCollection('blog'))
   title="Blog - Shavkatov"
   description="Texnologiya, dasturlash va shaxsiy tajribalar haqida maqolalar"
 >
-  <section class="blog-page">
+  <section class="blog-page" transition:animate="fade">
     <h1>Blog</h1>
-    <p class="blog-intro">
-      Texnologiya, dasturlash va shaxsiy tajribalar haqida maqolalar.
-    </p>
 
     {posts.length > 0 ? (
-      <ul class="posts-list">
+      <div class="posts-grid">
         {posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.id.replace(/\.md$/, '')}`}>
-              <div class="post-content">
-                <h2 class="post-title">{post.data.title}</h2>
-                {post.data.description && (
-                  <p class="post-description">{post.data.description}</p>
-                )}
-              </div>
-              <time datetime={post.data.date.toISOString()}>
-                {post.data.date.toLocaleDateString('uz-UZ', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </time>
-            </a>
-          </li>
+          <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="post-card">
+            <h3 class="post-title" data-uz={post.data.title} data-en={post.data.title_en || post.data.title}>{post.data.title}</h3>
+            {post.data.description && (
+              <h4 class="post-description" data-uz={post.data.description} data-en={post.data.description_en || post.data.description}>{post.data.description}</h4>
+            )}
+          </a>
         ))}
-      </ul>
+      </div>
     ) : (
-      <p class="no-posts">Hozircha maqolalar yo'q. Tez orada yangi maqolalar qo'shiladi.</p>
+      <p class="no-posts" id="noPosts">Hozircha maqolalar yo'q.</p>
     )}
   </section>
 </BaseLayout>
+
+<script>
+  const setLang = (lang: string) => {
+    document.querySelectorAll('.post-title').forEach((el) => {
+      const e = el as HTMLElement;
+      e.textContent = lang === 'en' ? e.dataset.en! : e.dataset.uz!;
+    });
+    document.querySelectorAll('.post-description').forEach((el) => {
+      const e = el as HTMLElement;
+      e.textContent = lang === 'en' ? e.dataset.en! : e.dataset.uz!;
+    });
+    const noPosts = document.getElementById('noPosts');
+    if (noPosts) noPosts.textContent = lang === 'en' ? 'No posts yet.' : 'Hozircha maqolalar yo\'q.';
+  };
+  setLang(localStorage.getItem('lang') || 'uz');
+  document.addEventListener('langchange', (e: any) => setLang(e.detail));
+</script>
 
 <style>
   .blog-page {
     padding: 2rem 0;
   }
 
-  .blog-intro {
-    color: var(--color-secondary);
+  .blog-page h1 {
     margin-bottom: 2rem;
+    color: #888888;
   }
 
-  .posts-list {
-    list-style: none;
-    padding: 0;
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .posts-list li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .posts-list li:last-child {
-    border-bottom: none;
-  }
-
-  .posts-list a {
+  .post-card {
     display: block;
-    padding: 1.5rem 0;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.2s ease, background 0.2s ease;
+    text-decoration: none;
   }
 
-  .post-content {
-    margin-bottom: 0.5rem;
+  .post-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
   }
 
   .post-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #888888;
+    margin: 0 0 0.5rem;
+    line-height: 1.4;
+  }
+
+  .post-card:hover .post-title {
+    color: var(--color-text);
   }
 
   .post-description {
-    color: var(--color-secondary);
-    font-size: 0.95rem;
+    color: #888888;
+    font-size: 0.85rem;
     margin: 0;
-  }
-
-  time {
-    color: var(--color-secondary);
-    font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .no-posts {
     color: var(--color-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .blog-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .blog-page h1 {
+      width: 95%;
+      text-align: left;
+    }
+
+    .posts-grid {
+      width: 95%;
+    }
   }
 </style>
