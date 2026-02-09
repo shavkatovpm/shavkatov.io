@@ -29,10 +29,10 @@ const pathname = Astro.url.pathname;
 <!-- Social confirm modal — body ichida, header tashqarisida -->
 <div class="modal-overlay" id="socialModal">
   <div class="modal">
-    <p>Open <span id="modalName"></span>?</p>
+    <p><span id="modalName"></span><span id="modalSuffix">ga o'tasizmi?</span></p>
     <div class="modal-actions">
-      <button id="modalCancel">Cancel</button>
-      <a id="modalConfirm" href="#" target="_blank" rel="noopener noreferrer">Continue</a>
+      <button id="modalCancel">Yo'q</button>
+      <a id="modalConfirm" href="#" target="_blank" rel="noopener noreferrer">Ha</a>
     </div>
   </div>
 </div>
@@ -43,12 +43,18 @@ const pathname = Astro.url.pathname;
     btn.addEventListener('click', () => {
       const url = (btn as HTMLElement).dataset.url!;
       const name = (btn as HTMLElement).dataset.name!;
+      const lang = localStorage.getItem('lang') || 'uz';
       // Har safar yangi DOM dan topamiz (sahifa almashganda modal yangilanadi)
       const modal = document.getElementById('socialModal');
       const modalName = document.getElementById('modalName');
+      const modalSuffix = document.getElementById('modalSuffix');
+      const modalCancel = document.getElementById('modalCancel');
       const modalConfirm = document.getElementById('modalConfirm') as HTMLAnchorElement;
-      if (modal && modalName && modalConfirm) {
+      if (modal && modalName && modalConfirm && modalSuffix && modalCancel) {
         modalName.textContent = name;
+        modalSuffix.textContent = lang === 'en' ? '?' : 'ga o\'tasizmi?';
+        modalCancel.textContent = lang === 'en' ? 'No' : 'Yo\'q';
+        modalConfirm.textContent = lang === 'en' ? 'Yes' : 'Ha';
         modalConfirm.href = url;
         modal.classList.add('open');
       }
@@ -81,7 +87,14 @@ const pathname = Astro.url.pathname;
 
 <style>
   header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 1.25rem 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
   }
 
   nav {
