@@ -52,10 +52,6 @@ import '../styles/global.css';
     if (isFirstLoad) {
       // Saytga yangi kirilganda: animatsiya bilan
       isFirstLoad = false;
-      // Header ni yashiramiz, keyin animatsiya bilan ko'rsatamiz
-      headerEl?.style.setProperty('opacity', '0');
-      headerEl?.style.setProperty('filter', 'blur(5px)');
-      headerEl?.style.setProperty('transition', 'opacity 0.8s ease-out, filter 0.8s ease-out');
 
       setTimeout(() => {
         heroName.classList.add('visible');
@@ -167,5 +163,10 @@ import '../styles/global.css';
     color: var(--color-text);
   }
 
+  :global(header) {
+    opacity: 0;
+    filter: blur(5px);
+    transition: opacity 0.8s ease-out, filter 0.8s ease-out;
+  }
 
 </style>
