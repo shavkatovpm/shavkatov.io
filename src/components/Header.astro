@@ -24,43 +24,48 @@ const pathname = Astro.url.pathname;
       </div>
     </div>
   </nav>
-
-  <!-- Social confirm modal -->
-  <div class="modal-overlay" id="socialModal">
-    <div class="modal">
-      <p>Open <span id="modalName"></span>?</p>
-      <div class="modal-actions">
-        <button id="modalCancel">Cancel</button>
-        <a id="modalConfirm" href="#" target="_blank" rel="noopener noreferrer">Continue</a>
-      </div>
-    </div>
-  </div>
 </header>
 
-<script>
-  // Social modal
-  const modal = document.getElementById('socialModal');
-  const modalName = document.getElementById('modalName');
-  const modalConfirm = document.getElementById('modalConfirm') as HTMLAnchorElement;
-  const modalCancel = document.getElementById('modalCancel');
+<!-- Social confirm modal — body ichida, header tashqarisida -->
+<div class="modal-overlay" id="socialModal">
+  <div class="modal">
+    <p>Open <span id="modalName"></span>?</p>
+    <div class="modal-actions">
+      <button id="modalCancel">Cancel</button>
+      <a id="modalConfirm" href="#" target="_blank" rel="noopener noreferrer">Continue</a>
+    </div>
+  </div>
+</div>
 
+<script>
+  // Social buttons — header persist qiladi, shuning uchun listenerlar bir marta qo'shiladi
   document.querySelectorAll('.social-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const url = (btn as HTMLElement).dataset.url!;
       const name = (btn as HTMLElement).dataset.name!;
-      modalName!.textContent = name;
-      modalConfirm!.href = url;
-      modal!.classList.add('open');
+      // Har safar yangi DOM dan topamiz (sahifa almashganda modal yangilanadi)
+      const modal = document.getElementById('socialModal');
+      const modalName = document.getElementById('modalName');
+      const modalConfirm = document.getElementById('modalConfirm') as HTMLAnchorElement;
+      if (modal && modalName && modalConfirm) {
+        modalName.textContent = name;
+        modalConfirm.href = url;
+        modal.classList.add('open');
+      }
     });
   });
 
-  modalCancel?.addEventListener('click', () => modal!.classList.remove('open'));
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.remove('open');
+  // Modal yopish — document delegation bilan (modal DOM almashsa ham ishlaydi)
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const modal = document.getElementById('socialModal');
+    if (!modal) return;
+    if (target.id === 'modalCancel' || target === modal || target.id === 'modalConfirm') {
+      modal.classList.remove('open');
+    }
   });
-  modalConfirm?.addEventListener('click', () => modal!.classList.remove('open'));
 
-  // Language toggle - shows current language, click to switch
+  // Language toggle
   const langBtn = document.getElementById('langToggle')!;
   const savedLang = localStorage.getItem('lang') || 'uz';
   langBtn.textContent = savedLang === 'en' ? '🇬🇧' : '🇺🇿';
@@ -136,7 +141,7 @@ const pathname = Astro.url.pathname;
   }
 
   /* Modal */
-  .modal-overlay {
+  :global(.modal-overlay) {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
@@ -150,12 +155,12 @@ const pathname = Astro.url.pathname;
     transition: opacity 0.2s ease;
   }
 
-  .modal-overlay.open {
+  :global(.modal-overlay.open) {
     opacity: 1;
     pointer-events: auto;
   }
 
-  .modal {
+  :global(.modal) {
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 10px;
     padding: 1.25rem 1.75rem;
@@ -165,24 +170,24 @@ const pathname = Astro.url.pathname;
     width: 90%;
   }
 
-  .modal p {
+  :global(.modal p) {
     color: #888888;
     font-size: 0.9rem;
     margin: 0 0 1rem;
   }
 
-  .modal #modalName {
+  :global(.modal #modalName) {
     color: var(--color-text);
   }
 
-  .modal-actions {
+  :global(.modal-actions) {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
   }
 
-  .modal-actions button,
-  .modal-actions a {
+  :global(.modal-actions button),
+  :global(.modal-actions a) {
     font-family: 'Poppins', system-ui, sans-serif;
     font-size: 0.8rem;
     padding: 0.35rem 1rem;
@@ -192,24 +197,24 @@ const pathname = Astro.url.pathname;
     text-decoration: none;
   }
 
-  #modalCancel {
+  :global(#modalCancel) {
     background: none;
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #888888;
   }
 
-  #modalCancel:hover {
+  :global(#modalCancel:hover) {
     border-color: rgba(255, 255, 255, 0.15);
     color: var(--color-text);
   }
 
-  #modalConfirm {
+  :global(#modalConfirm) {
     background: rgba(255, 255, 255, 0.06);
     border: none;
     color: var(--color-text);
   }
 
-  #modalConfirm:hover {
+  :global(#modalConfirm:hover) {
     background: rgba(255, 255, 255, 0.12);
   }
 </style>
