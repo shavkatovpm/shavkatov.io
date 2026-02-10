@@ -27,7 +27,7 @@ Bu yerda kirish ham bor, chiqish ham bor.
 
 Lekin domen sifatida .io umuman boshqa narsa, rasmiy jihatdan alohida hududga tegishli nom.
 
-P.S. Rasmiy jihatdan .io - Britaniya Hind Okeani hududiga tegishli davlat domeni. AyTi dunyosida u ko'pincha texnik loyihalar va mahsulotlar bilan bog'lanadi.
+Ma'lumot uchun: .io - Britaniya Hind Okeani hududiga tegishli davlat domeni. AyTi dunyosida u ko'pincha texnik loyihalar va mahsulotlar bilan bog'lanadi.
 
 Norasmiy jihatdan esa unga qanday ma'no berishimizga bog'liq.
 
@@ -54,7 +54,7 @@ There is input here, and there is output.
 
 But as a domain, .io is something completely different, officially a name belonging to a specific territory.
 
-P.S. Officially, .io is a country code domain for the British Indian Ocean Territory. In the IT world, it is often associated with tech projects and products.
+For reference: .io is a country code domain for the British Indian Ocean Territory. In the IT world, it is often associated with tech projects and products.
 
 Unofficially, it depends on what meaning we give it.
 
