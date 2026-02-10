@@ -86,8 +86,9 @@ const posts = (await getCollection('blog'))
     line-height: 1.4;
   }
 
-  .post-card:hover .post-title {
-    color: var(--color-text);
+  .post-card:hover .post-title,
+  .post-card:hover .post-description {
+    color: #dddddd;
   }
 
   .post-description {
