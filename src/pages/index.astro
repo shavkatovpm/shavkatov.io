@@ -64,9 +64,11 @@ import '../styles/global.css';
       }, 1600);
     } else {
       // Ichki sahifadan qaytganda: hero elementlarini darhol ko'rsatish (transition o'chiriladi)
-      // Header transition:persist tufayli o'z joyida qoladi
       heroName.style.cssText = 'opacity:1;filter:none;transition:none';
       heroLinks!.style.cssText = 'opacity:1;filter:none;transition:none';
+      headerEl!.style.setProperty('opacity', '1');
+      headerEl!.style.setProperty('filter', 'none');
+      headerEl!.style.setProperty('transition', 'none');
     }
 
     // Til o'zgarganda About/Haqida almashadi
