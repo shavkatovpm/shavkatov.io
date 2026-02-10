@@ -12,8 +12,7 @@ AyTi'da I/O degan tushuncha bor. Input va Output. Ya'ni kirish va chiqish.
 
 Eng oddiy misol bilan:
 
-Klaviaturada bosilgan tugma - input.
-
+Klaviaturada bosilgan tugma - input.<br>
 Ekranda paydo bo'lgan belgi - output.
 
 Texnik tomondan I/O shu.
@@ -40,8 +39,7 @@ In IT, there is a concept called I/O. Input and Output. In other words, what goe
 
 The simplest example:
 
-A key pressed on the keyboard - input.
-
+A key pressed on the keyboard - input.<br>
 A character appearing on the screen - output.
 
 Technically, that is I/O.
