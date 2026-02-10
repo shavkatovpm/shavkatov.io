@@ -38,53 +38,60 @@ const pathname = Astro.url.pathname;
 </div>
 
 <script>
-  // Social buttons — header persist qiladi, shuning uchun listenerlar bir marta qo'shiladi
-  document.querySelectorAll('.social-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const url = (btn as HTMLElement).dataset.url!;
-      const name = (btn as HTMLElement).dataset.name!;
-      const lang = localStorage.getItem('lang') || 'uz';
-      // Har safar yangi DOM dan topamiz (sahifa almashganda modal yangilanadi)
+  // Barcha eventlar document delegation orqali — persist dublikat muammosini hal qiladi
+  if (!(window as any).__headerListenersReady) {
+    (window as any).__headerListenersReady = true;
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const btn = target.closest('.social-btn') as HTMLElement;
       const modal = document.getElementById('socialModal');
-      const modalName = document.getElementById('modalName');
-      const modalPrefix = document.getElementById('modalPrefix');
-      const modalSuffix = document.getElementById('modalSuffix');
-      const modalCancel = document.getElementById('modalCancel');
-      const modalConfirm = document.getElementById('modalConfirm') as HTMLAnchorElement;
-      if (modal && modalName && modalConfirm && modalPrefix && modalSuffix && modalCancel) {
-        modalPrefix.textContent = lang === 'en' ? 'Open ' : '';
-        modalName.textContent = name;
-        modalSuffix.textContent = lang === 'en' ? '?' : 'ga o\'tasizmi?';
-        modalCancel.textContent = lang === 'en' ? 'No' : 'Yo\'q';
-        modalConfirm.textContent = lang === 'en' ? 'Yes' : 'Ha';
-        modalConfirm.href = url;
-        modal.classList.add('open');
+
+      // Social button bosilganda
+      if (btn) {
+        const url = btn.dataset.url!;
+        const name = btn.dataset.name!;
+        const lang = localStorage.getItem('lang') || 'uz';
+        const modalName = document.getElementById('modalName');
+        const modalPrefix = document.getElementById('modalPrefix');
+        const modalSuffix = document.getElementById('modalSuffix');
+        const modalCancel = document.getElementById('modalCancel');
+        const modalConfirm = document.getElementById('modalConfirm') as HTMLAnchorElement;
+        if (modal && modalName && modalConfirm && modalPrefix && modalSuffix && modalCancel) {
+          modalPrefix.textContent = lang === 'en' ? 'Open ' : '';
+          modalName.textContent = name;
+          modalSuffix.textContent = lang === 'en' ? '?' : 'ga o\'tasizmi?';
+          modalCancel.textContent = lang === 'en' ? 'No' : 'Yo\'q';
+          modalConfirm.textContent = lang === 'en' ? 'Yes' : 'Ha';
+          modalConfirm.href = url;
+          modal.classList.add('open');
+        }
+        return;
+      }
+
+      // Modal yopish
+      if (modal && (target.id === 'modalCancel' || target === modal || target.id === 'modalConfirm')) {
+        modal.classList.remove('open');
+        return;
+      }
+
+      // Language toggle
+      if (target.id === 'langToggle' || target.closest('#langToggle')) {
+        const langBtn = document.getElementById('langToggle')!;
+        const current = localStorage.getItem('lang') || 'uz';
+        const next = current === 'en' ? 'uz' : 'en';
+        localStorage.setItem('lang', next);
+        langBtn.textContent = next === 'en' ? '🇬🇧' : '🇺🇿';
+        document.dispatchEvent(new CustomEvent('langchange', { detail: next }));
       }
     });
-  });
+  }
 
-  // Modal yopish — document delegation bilan (modal DOM almashsa ham ishlaydi)
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    const modal = document.getElementById('socialModal');
-    if (!modal) return;
-    if (target.id === 'modalCancel' || target === modal || target.id === 'modalConfirm') {
-      modal.classList.remove('open');
-    }
-  });
-
-  // Language toggle
-  const langBtn = document.getElementById('langToggle')!;
-  const savedLang = localStorage.getItem('lang') || 'uz';
-  langBtn.textContent = savedLang === 'en' ? '🇬🇧' : '🇺🇿';
-
-  langBtn.addEventListener('click', () => {
-    const current = localStorage.getItem('lang') || 'uz';
-    const next = current === 'en' ? 'uz' : 'en';
-    localStorage.setItem('lang', next);
-    langBtn.textContent = next === 'en' ? '🇬🇧' : '🇺🇿';
-    document.dispatchEvent(new CustomEvent('langchange', { detail: next }));
-  });
+  // Sahifa yuklanganda til emoji ni to'g'rilash
+  const langBtn = document.getElementById('langToggle');
+  if (langBtn) {
+    langBtn.textContent = (localStorage.getItem('lang') || 'uz') === 'en' ? '🇬🇧' : '🇺🇿';
+  }
 </script>
 
 <style>

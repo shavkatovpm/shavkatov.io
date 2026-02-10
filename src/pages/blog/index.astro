@@ -84,6 +84,11 @@ const posts = (await getCollection('blog'))
     color: #888888;
     margin: 0 0 0.5rem;
     line-height: 1.4;
+    height: calc(1.1rem * 1.4);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .post-card:hover .post-title,
@@ -96,6 +101,10 @@ const posts = (await getCollection('blog'))
     font-size: 0.85rem;
     margin: 0;
     line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .no-posts {
