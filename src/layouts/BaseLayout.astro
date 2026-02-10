@@ -69,7 +69,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     "author": {
       "@type": "Person",
       "name": "Shavkatov Fayzulloh",
-      "url": "https://shavkatov.io"
+      "additionalName": "Furqat o'g'li",
+      "jobTitle": "Project Manager",
+      "url": "https://shavkatov.io",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tashkent",
+        "addressCountry": "UZ"
+      },
+      "sameAs": [
+        "https://t.me/shavkatovio",
+        "https://instagram.com/shavkatov.io"
+      ]
     },
     ...(article ? {} : {
       "publisher": {

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 - Shavkatov">
+  <section class="not-found">
+    <h1>404</h1>
+    <p id="notFoundText">Bu yerda hech narsa yo'q.</p>
+    <a href="/" id="backHome">&larr; Bosh sahifa</a>
+  </section>
+</BaseLayout>
+
+<script>
+  const setLang = (lang: string) => {
+    const text = document.getElementById('notFoundText');
+    const link = document.getElementById('backHome');
+    if (text) text.textContent = lang === 'en' ? 'There is nothing here.' : 'Bu yerda hech narsa yo\'q.';
+    if (link) link.innerHTML = lang === 'en' ? '&larr; Home' : '&larr; Bosh sahifa';
+  };
+  setLang(localStorage.getItem('lang') || 'uz');
+  document.addEventListener('langchange', (e: any) => setLang(e.detail));
+</script>
+
+<style>
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+  }
+
+  .not-found h1 {
+    font-size: 4rem;
+    color: #888888;
+    margin-bottom: 0.5rem;
+  }
+
+  .not-found p {
+    color: #888888;
+    margin-bottom: 2rem;
+  }
+
+  .not-found a {
+    color: var(--color-secondary);
+  }
+
+  .not-found a:hover {
+    color: var(--color-text);
+  }
+</style>
