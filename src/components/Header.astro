@@ -29,7 +29,7 @@ const pathname = Astro.url.pathname;
 <!-- Social confirm modal — body ichida, header tashqarisida -->
 <div class="modal-overlay" id="socialModal">
   <div class="modal">
-    <p><span id="modalName"></span><span id="modalSuffix">ga o'tasizmi?</span></p>
+    <p><span id="modalPrefix"></span><span id="modalName"></span><span id="modalSuffix">ga o'tasizmi?</span></p>
     <div class="modal-actions">
       <button id="modalCancel">Yo'q</button>
       <a id="modalConfirm" href="#" target="_blank" rel="noopener noreferrer">Ha</a>
@@ -47,10 +47,12 @@ const pathname = Astro.url.pathname;
       // Har safar yangi DOM dan topamiz (sahifa almashganda modal yangilanadi)
       const modal = document.getElementById('socialModal');
       const modalName = document.getElementById('modalName');
+      const modalPrefix = document.getElementById('modalPrefix');
       const modalSuffix = document.getElementById('modalSuffix');
       const modalCancel = document.getElementById('modalCancel');
       const modalConfirm = document.getElementById('modalConfirm') as HTMLAnchorElement;
-      if (modal && modalName && modalConfirm && modalSuffix && modalCancel) {
+      if (modal && modalName && modalConfirm && modalPrefix && modalSuffix && modalCancel) {
+        modalPrefix.textContent = lang === 'en' ? 'Open ' : '';
         modalName.textContent = name;
         modalSuffix.textContent = lang === 'en' ? '?' : 'ga o\'tasizmi?';
         modalCancel.textContent = lang === 'en' ? 'No' : 'Yo\'q';

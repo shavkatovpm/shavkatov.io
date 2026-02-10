@@ -19,6 +19,10 @@ const { Content } = await render(post);
   description={post.data.description}
   article={true}
 >
+  <Fragment slot="head">
+    <meta property="article:published_time" content={post.data.date.toISOString()} />
+    <meta property="article:author" content="Shavkatov Fayzulloh" />
+  </Fragment>
   <article class="blog-post" transition:animate="fade">
     <header>
       <h1 id="postTitle" data-uz={post.data.title} data-en={post.data.title_en || post.data.title}>{post.data.title}</h1>

@@ -14,7 +14,7 @@ interface Props {
 const {
   title,
   description = "Shavkatov - Personal blog about technology and development",
-  ogImage = "/og-default.png",
+  ogImage = "/logo.png",
   article = false
 } = Astro.props;
 
@@ -58,6 +58,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": article ? "Article" : "WebSite",
+    "name": title,
+    "url": canonicalURL,
+    "description": description,
+    "author": {
+      "@type": "Person",
+      "name": "Shavkatov Fayzulloh",
+      "url": "https://shavkatov.io"
+    },
+    ...(article ? {} : {
+      "publisher": {
+        "@type": "Person",
+        "name": "Shavkatov Fayzulloh"
+      }
+    })
+  })} />
 
   <ViewTransitions />
   <slot name="head" />
