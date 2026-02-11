@@ -14,7 +14,7 @@ interface Props {
 const {
   title,
   description = "Shavkatov - Personal blog about technology and development",
-  ogImage = "/logo.png",
+  ogImage = "/og-image.jpg",
   article = false
 } = Astro.props;
 
@@ -72,7 +72,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "additionalName": "Furqat o'g'li",
       "jobTitle": "Project Manager",
       "url": "https://shavkatov.io",
-      "image": "https://shavkatov.io/logo.png",
+      "image": "https://shavkatov.io/og-image.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Tashkent",
