@@ -8,7 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <article class="about" id="aboutContent" transition:animate="fade">
     <div class="about-uz">
-      <h1>Shavkatov Fayzulloh haqida</h1>
+      <h1 class="sr-only">Shavkatov Fayzulloh haqida</h1>
       <h3>Qisqa qilaman:</h3>
 
       <p>Sahifa rezyume uchun emas, bu yerda "hammasi reja bo'yicha" degan gap ham yo'q.</p>
@@ -25,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
 
     <div class="about-en" style="display: none;">
-      <h1>About Shavkatov Fayzulloh</h1>
+      <h1 class="sr-only">About Shavkatov Fayzulloh</h1>
       <h3>Short:</h3>
 
       <p>This page is not a resume. And there's no "everything is going according to plan" here.</p>
@@ -70,10 +70,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: relative;
   }
 
-.about h1 {
-    color: #888888;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
   }
 
   .about h3 {
