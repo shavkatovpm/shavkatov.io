@@ -107,7 +107,7 @@ import '../styles/global.css';
         heroLinks?.classList.add('visible');
         headerEl?.style.setProperty('opacity', '1');
         headerEl?.style.setProperty('filter', 'blur(0px)');
-      }, 500);
+      }, 250);
     } else {
       // Ichki sahifadan qaytganda: hero elementlarini darhol ko'rsatish (transition o'chiriladi)
       heroName.style.cssText = 'opacity:1;filter:none;transition:none';
@@ -176,7 +176,7 @@ import '../styles/global.css';
     color: #888888;
     opacity: 0;
     filter: blur(10px);
-    transition: opacity 0.5s ease-out, filter 0.5s ease-out;
+    transition: opacity 0.25s ease-out, filter 0.25s ease-out;
   }
 
   .hero-name.visible {
@@ -190,7 +190,7 @@ import '../styles/global.css';
     justify-content: center;
     opacity: 0;
     filter: blur(5px);
-    transition: opacity 0.5s ease-out, filter 0.5s ease-out;
+    transition: opacity 0.25s ease-out, filter 0.25s ease-out;
   }
 
   .hero-links.visible {
@@ -212,7 +212,7 @@ import '../styles/global.css';
   :global(header) {
     opacity: 0;
     filter: blur(5px);
-    transition: opacity 0.5s ease-out, filter 0.5s ease-out;
+    transition: opacity 0.25s ease-out, filter 0.25s ease-out;
   }
 
 </style>
