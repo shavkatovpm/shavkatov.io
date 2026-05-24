@@ -1,14 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
 ---
 
 <BaseLayout
-  title="Shavkatov Fayzulloh haqida"
-  description="Shavkatov Fayzulloh - Project Manager with 3+ years of experience in IT and Marketing"
+  title="Shavkatov Fayzulloh haqida — SEO, AEO va GEO maslahatchi"
+  description="Shavkatov Fayzulloh — SEO, AEO va GEO bo'yicha maslahatchi, Darslinker.uz asoschisi. O'zbek bizneslarini Google va AI qidiruvda o'sib chiqaradi."
 >
   <article class="about" id="aboutContent" transition:animate="fade">
+    <section class="about-intro">
+      <div class="about-uz">
+        <h1 class="sr-only">Shavkatov Fayzulloh haqida</h1>
+        <p class="lead-uz">
+          <strong>SEO, AEO va GEO bo'yicha maslahatchi.</strong> O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. Darslinker.uz'da sinab ko'rgan pleybukni mijozlarim uchun ham qo'llayman.
+        </p>
+      </div>
+      <div class="about-en" style="display: none;">
+        <h1 class="sr-only">About Shavkatov Fayzulloh</h1>
+        <p class="lead-en">
+          <strong>SEO, AEO and GEO consultant.</strong> I help Uzbek businesses grow in Google and AI search. The same playbook I run on Darslinker.uz, applied for my clients.
+        </p>
+      </div>
+    </section>
+
+    <section class="personal">
     <div class="about-uz">
-      <h1 class="sr-only">Shavkatov Fayzulloh haqida</h1>
       <h3>Qisqa qilaman:</h3>
 
       <p>Sahifa rezyume uchun emas, bu yerda "hammasi reja bo'yicha" degan gap ham yo'q.</p>
@@ -40,6 +56,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <p class="signature">Shavkatov Fayzulloh</p>
     </div>
+    </section>
+
+    <CTA />
 
     <footer>
       <a href="/" id="backLink">&larr; Ortga</a>
@@ -49,13 +68,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  const uzBlock = document.querySelector('.about-uz') as HTMLElement;
-  const enBlock = document.querySelector('.about-en') as HTMLElement;
   const backLink = document.getElementById('backLink');
 
   const setLang = (lang: string) => {
-    uzBlock.style.display = lang === 'en' ? 'none' : 'block';
-    enBlock.style.display = lang === 'en' ? 'block' : 'none';
+    document.querySelectorAll('.about-uz').forEach((el) => {
+      (el as HTMLElement).style.display = lang === 'en' ? 'none' : 'block';
+    });
+    document.querySelectorAll('.about-en').forEach((el) => {
+      (el as HTMLElement).style.display = lang === 'en' ? 'block' : 'none';
+    });
     if (backLink) backLink.innerHTML = lang === 'en' ? '&larr; Back' : '&larr; Ortga';
   };
 
@@ -70,6 +91,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: relative;
   }
 
+  .about-intro {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(118, 118, 118, 0.3);
+  }
+
+  .lead-uz, .lead-en {
+    color: var(--color-text);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .lead-uz strong, .lead-en strong {
+    color: var(--color-text);
+  }
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -82,18 +120,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .about h3 {
-    color: #888888;
+    color: #b3b3b3;
   }
 
   .about p {
-    color: #888888;
+    color: #b3b3b3;
     line-height: 1.8;
     margin-bottom: 1.25rem;
   }
 
   .signature {
     margin-top: 2.5rem;
-    color: #888888;
+    color: #b3b3b3;
     font-style: normal;
   }
 

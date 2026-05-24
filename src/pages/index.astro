@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions, fade } from 'astro:transitions';
+import { ClientRouter, fade } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import '../styles/global.css';
 ---
@@ -13,23 +13,23 @@ import '../styles/global.css';
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <title>Shavkatov Fayzulloh - Project Manager</title>
-  <meta name="description" content="Shavkatov Fayzulloh - Personal blog about technology and development" />
+  <title>Shavkatov Fayzulloh — SEO, AEO va GEO bo'yicha maslahatchi</title>
+  <meta name="description" content="O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. SEO, AEO va GEO bo'yicha amaliy maslahat va xizmatlar. Darslinker.uz asoschisi." />
   <meta name="author" content="Shavkatov Fayzulloh" />
   <link rel="canonical" href="https://shavkatov.io/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://shavkatov.io/" />
-  <meta property="og:title" content="Shavkatov Fayzulloh - Project Manager" />
-  <meta property="og:description" content="Shavkatov Fayzulloh - Personal blog about technology and development" />
+  <meta property="og:title" content="Shavkatov Fayzulloh — SEO, AEO va GEO bo'yicha maslahatchi" />
+  <meta property="og:description" content="O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. Darslinker.uz asoschisi." />
   <meta property="og:image" content="https://shavkatov.io/og-image.jpg" />
   <meta property="og:locale" content="uz_UZ" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Shavkatov Fayzulloh - Project Manager" />
-  <meta name="twitter:description" content="Shavkatov Fayzulloh - Personal blog about technology and development" />
+  <meta name="twitter:title" content="Shavkatov Fayzulloh — SEO, AEO va GEO bo'yicha maslahatchi" />
+  <meta name="twitter:description" content="O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. Darslinker.uz asoschisi." />
   <meta name="twitter:image" content="https://shavkatov.io/og-image.jpg" />
 
   <meta name="theme-color" content="#000000" />
@@ -43,14 +43,26 @@ import '../styles/global.css';
       "@type": "Person",
       "name": "Shavkatov Fayzulloh",
       "additionalName": "Furqat o'g'li",
-      "jobTitle": "Project Manager",
-      "description": "Project Manager with 3+ years of experience in IT and Marketing. Founder of several IT projects based in Tashkent, Uzbekistan.",
+      "jobTitle": "SEO, AEO & GEO Consultant",
+      "description": "SEO, AEO and GEO consultant helping Uzbek SMBs grow through search. Founder of Darslinker.uz. 3+ years of project management experience in IT and marketing.",
       "url": "https://shavkatov.io",
       "image": "https://shavkatov.io/og-image.jpg",
+      "knowsAbout": [
+        "Search Engine Optimization",
+        "Answer Engine Optimization",
+        "Generative Engine Optimization",
+        "Project Management",
+        "Digital Marketing"
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Tashkent",
         "addressCountry": "UZ"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Darslinker",
+        "url": "https://darslinker.uz"
       },
       "sameAs": [
         "https://t.me/shavkatovio",
@@ -66,7 +78,7 @@ import '../styles/global.css';
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "vf4tq5adhl");
   </script>
-  <ViewTransitions />
+  <ClientRouter />
 </head>
 <body class="hero-page">
   <canvas id="splashCanvas"></canvas>
@@ -75,8 +87,9 @@ import '../styles/global.css';
     <div class="hero-content container">
       <h1 class="hero-name" id="heroName">Shavkatov Fayzulloh</h1>
       <div class="hero-links" id="heroLinks">
-        <a href="/about" id="aboutLink">Haqida</a>
+        <a href="/services" id="servicesLink">Xizmatlar</a>
         <a href="/blog">Blog</a>
+        <a href="/about" id="aboutLink">Haqida</a>
       </div>
     </div>
   </section>
@@ -117,13 +130,15 @@ import '../styles/global.css';
       headerEl!.style.setProperty('transition', 'none');
     }
 
-    // Til o'zgarganda About/Haqida almashadi
+    // Til o'zgarganda nav linklari almashadi
     const aboutLink = document.getElementById('aboutLink');
-    const updateAboutText = (lang: string) => {
+    const servicesLink = document.getElementById('servicesLink');
+    const updateNavText = (lang: string) => {
       if (aboutLink) aboutLink.textContent = lang === 'en' ? 'About' : 'Haqida';
+      if (servicesLink) servicesLink.textContent = lang === 'en' ? 'Services' : 'Xizmatlar';
     };
-    updateAboutText(localStorage.getItem('lang') || 'uz');
-    document.addEventListener('langchange', (e: any) => updateAboutText(e.detail));
+    updateNavText(localStorage.getItem('lang') || 'uz');
+    document.addEventListener('langchange', (e: any) => updateNavText(e.detail));
   }
 
   // astro:page-load har safar ishlaydi — ham birinchi yuklashda, ham View Transition keyin
@@ -173,7 +188,7 @@ import '../styles/global.css';
     letter-spacing: -0.02em;
     line-height: 1.1;
     white-space: nowrap;
-    color: #888888;
+    color: #b3b3b3;
     opacity: 0;
     filter: blur(10px);
     transition: opacity 0.25s ease-out, filter 0.25s ease-out;
@@ -199,7 +214,7 @@ import '../styles/global.css';
   }
 
   .hero-links a {
-    color: #888888;
+    color: #b3b3b3;
     font-size: 0.95rem;
     font-family: 'Poppins', sans-serif;
     transition: color 0.2s ease;

@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<BaseLayout
+  title="Xizmatlar — SEO, AEO va GEO maslahatchilik | Shavkatov"
+  description="SEO, AEO va GEO bo'yicha amaliy maslahatchilik xizmatlari. O'zbek bizneslari uchun audit, strategiya va ijro. Darslinker.uz tajribasi asosida."
+>
+  <section class="services" transition:animate="fade">
+    <header class="services-header">
+      <h1 id="servicesH1" data-uz="Xizmatlar" data-en="Services">Xizmatlar</h1>
+      <p class="lead" id="servicesLead"
+        data-uz="O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. Darslinker.uz'da sinab ko'rgan pleybukni siz uchun ham qo'llayman."
+        data-en="I help Uzbek businesses grow in Google and AI search. The same playbook I run on Darslinker.uz, applied to your business."
+      >
+        O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. Darslinker.uz'da sinab ko'rgan pleybukni siz uchun ham qo'llayman.
+      </p>
+    </header>
+
+    <div class="package">
+      <div class="package-tag" data-uz="Asosiy xizmat" data-en="Main service">Asosiy xizmat</div>
+      <h2 class="package-title"
+        data-uz="SEO va AEO audit + strategiya"
+        data-en="SEO & AEO audit + strategy"
+      >SEO va AEO audit + strategiya</h2>
+      <p class="package-sub"
+        data-uz="Saytingiz hozir qaerda turibdi, qaerga borishi mumkin va 90 kun ichida nima qilish kerakligini aniq aytib beraman."
+        data-en="Where your site stands now, where it can go, and exactly what to do in 90 days."
+      >
+        Saytingiz hozir qaerda turibdi, qaerga borishi mumkin va 90 kun ichida nima qilish kerakligini aniq aytib beraman.
+      </p>
+
+      <ul class="package-list">
+        <li data-uz="Texnik va kontent SEO auditi" data-en="Technical & content SEO audit">Texnik va kontent SEO auditi</li>
+        <li data-uz="AEO tayyorligi — LLM'larda qanday ko'rinasiz" data-en="AEO readiness — how you appear in LLMs">AEO tayyorligi — LLM'larda qanday ko'rinasiz</li>
+        <li data-uz="Raqobatchi tahlili (3-5 ta loyiha)" data-en="Competitor analysis (3-5 projects)">Raqobatchi tahlili (3-5 ta loyiha)</li>
+        <li data-uz="Kalit so'z va kontent strategiyasi" data-en="Keyword & content strategy">Kalit so'z va kontent strategiyasi</li>
+        <li data-uz="90 kunlik bajariladigan reja" data-en="90-day actionable roadmap">90 kunlik bajariladigan reja</li>
+        <li data-uz="Yakuniy yig'ilish va savol-javob" data-en="Final review session and Q&A">Yakuniy yig'ilish va savol-javob</li>
+      </ul>
+
+      <div class="package-meta">
+        <div class="meta-item">
+          <span class="meta-label" data-uz="Muddat" data-en="Duration">Muddat</span>
+          <span class="meta-value" data-uz="10-14 ish kuni" data-en="10-14 business days">10-14 ish kuni</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label" data-uz="Format" data-en="Format">Format</span>
+          <span class="meta-value" data-uz="To'liq hisobot + 1 soat suhbat" data-en="Full report + 1-hour call">To'liq hisobot + 1 soat suhbat</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label" data-uz="Narx" data-en="Price">Narx</span>
+          <span class="meta-value" data-uz="Konsultatsiyada kelishiladi" data-en="Discussed in consultation">Konsultatsiyada kelishiladi</span>
+        </div>
+      </div>
+    </div>
+
+    <CTA />
+
+    <section class="for-who">
+      <h2 id="forWhoTitle" data-uz="Kimga mos" data-en="Who it's for">Kimga mos</h2>
+      <div class="for-who-grid">
+        <div class="who-item">
+          <strong data-uz="Mahalliy SMB" data-en="Local SMB">Mahalliy SMB</strong>
+          <p data-uz="Restoran, klinika, do'kon, xizmat kompaniyasi — Google'da yaxshi ko'rinish kerak"
+             data-en="Restaurant, clinic, shop, service company — needs to look strong in Google">
+            Restoran, klinika, do'kon, xizmat kompaniyasi — Google'da yaxshi ko'rinish kerak
+          </p>
+        </div>
+        <div class="who-item">
+          <strong data-uz="E-commerce" data-en="E-commerce">E-commerce</strong>
+          <p data-uz="Onlayn do'kon — organik trafik orqali sotuvni oshirish"
+             data-en="Online store — grow sales through organic traffic">
+            Onlayn do'kon — organik trafik orqali sotuvni oshirish
+          </p>
+        </div>
+        <div class="who-item">
+          <strong data-uz="Startaplar" data-en="Startups">Startaplar</strong>
+          <p data-uz="MVP chiqargan va birinchi mijozlarni qidirayotgan jamoa"
+             data-en="Teams who shipped MVP and look for first customers">
+            MVP chiqargan va birinchi mijozlarni qidirayotgan jamoa
+          </p>
+        </div>
+        <div class="who-item">
+          <strong data-uz="Agentliklar" data-en="Agencies">Agentliklar</strong>
+          <p data-uz="Marketing agentligi — o'z auditoriyasiga AEO ekspertiza qo'shmoqchi"
+             data-en="Marketing agency adding AEO expertise to their offering">
+            Marketing agentligi — o'z auditoriyasiga AEO ekspertiza qo'shmoqchi
+          </p>
+        </div>
+      </div>
+    </section>
+  </section>
+</BaseLayout>
+
+<script>
+  const setLang = (lang: string) => {
+    document.querySelectorAll('[data-uz]').forEach((el) => {
+      const e = el as HTMLElement;
+      if (e.dataset.en !== undefined) {
+        e.textContent = lang === 'en' ? (e.dataset.en || '') : (e.dataset.uz || '');
+      }
+    });
+  };
+  setLang(localStorage.getItem('lang') || 'uz');
+  document.addEventListener('langchange', (e: any) => setLang(e.detail));
+</script>
+
+<style>
+  .services {
+    padding: 0.5rem 0 3rem;
+  }
+
+  .services-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .services-header h1 {
+    color: var(--color-text);
+    margin: 0 0 0.75rem;
+  }
+
+  .lead {
+    color: var(--color-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .package {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 1.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    margin-bottom: 0;
+  }
+
+  .package-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--color-secondary);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  .package-title {
+    color: var(--color-text);
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+  }
+
+  .package-sub {
+    color: var(--color-secondary);
+    margin: 0 0 1.5rem;
+    line-height: 1.7;
+  }
+
+  .package-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+  }
+
+  .package-list li {
+    color: var(--color-secondary);
+    padding: 0.4rem 0 0.4rem 1.4rem;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .package-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-text);
+  }
+
+  .package-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .meta-label {
+    font-size: 0.75rem;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .meta-value {
+    color: var(--color-text);
+    font-size: 0.95rem;
+  }
+
+  .for-who {
+    margin-top: 3rem;
+  }
+
+  .for-who h2 {
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+  }
+
+  .for-who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .who-item {
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .who-item strong {
+    display: block;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+  }
+
+  .who-item p {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+</style>

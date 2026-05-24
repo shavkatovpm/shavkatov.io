@@ -3,12 +3,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (d: Date, lang: 'uz' | 'en') => {
+  if (lang === 'en') {
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+  return d.toLocaleDateString('uz-UZ', { year: 'numeric', month: 'short', day: 'numeric' });
+};
 ---
 
 <BaseLayout
-  title="Blog - Shavkatov"
-  description="Texnologiya, dasturlash va shaxsiy tajribalar haqida maqolalar"
+  title="Blog - SEO, AEO va GEO bo'yicha amaliy maqolalar"
+  description="SEO, AEO va GEO bo'yicha O'zbek tilida amaliy qo'llanmalar va sektor bo'yicha keys-tahlillar."
 >
   <section class="blog-page" transition:animate="fade">
     <h1>Blog</h1>
@@ -17,6 +25,13 @@ const posts = (await getCollection('blog'))
       <div class="posts-grid">
         {posts.map((post) => (
           <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="post-card">
+            <div class="post-date">
+              <time
+                datetime={post.data.date.toISOString()}
+                data-uz={formatDate(post.data.date, 'uz')}
+                data-en={formatDate(post.data.date, 'en')}
+              >{formatDate(post.data.date, 'uz')}</time>
+            </div>
             <h3 class="post-title" data-uz={post.data.title} data-en={post.data.title_en || post.data.title}>{post.data.title}</h3>
             {post.data.description && (
               <h4 class="post-description" data-uz={post.data.description} data-en={post.data.description_en || post.data.description}>{post.data.description}</h4>
@@ -32,13 +47,11 @@ const posts = (await getCollection('blog'))
 
 <script>
   const setLang = (lang: string) => {
-    document.querySelectorAll('.post-title').forEach((el) => {
+    document.querySelectorAll('.post-title, .post-description, .post-date time').forEach((el) => {
       const e = el as HTMLElement;
-      e.textContent = lang === 'en' ? e.dataset.en! : e.dataset.uz!;
-    });
-    document.querySelectorAll('.post-description').forEach((el) => {
-      const e = el as HTMLElement;
-      e.textContent = lang === 'en' ? e.dataset.en! : e.dataset.uz!;
+      if (e.dataset.en !== undefined && e.dataset.uz !== undefined) {
+        e.textContent = lang === 'en' ? (e.dataset.en || '') : (e.dataset.uz || '');
+      }
     });
     const noPosts = document.getElementById('noPosts');
     if (noPosts) noPosts.textContent = lang === 'en' ? 'No posts yet.' : 'Hozircha maqolalar yo\'q.';
@@ -54,7 +67,7 @@ const posts = (await getCollection('blog'))
 
   .blog-page h1 {
     margin-bottom: 2rem;
-    color: #888888;
+    color: #b3b3b3;
   }
 
   .posts-grid {
@@ -73,6 +86,13 @@ const posts = (await getCollection('blog'))
     text-decoration: none;
   }
 
+  .post-date {
+    font-size: 0.78rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+  }
+
   .post-card:hover {
     border-color: #dddddd;
     background: #000000;
@@ -81,7 +101,7 @@ const posts = (await getCollection('blog'))
   .post-title {
     font-size: 1.1rem;
     font-weight: 500;
-    color: #888888;
+    color: #b3b3b3;
     margin: 0 0 0.5rem;
     line-height: 1.4;
     height: calc(1.1rem * 1.4);
@@ -97,7 +117,7 @@ const posts = (await getCollection('blog'))
   }
 
   .post-description {
-    color: #888888;
+    color: #b3b3b3;
     font-size: 0.85rem;
     margin: 0;
     line-height: 1.5;

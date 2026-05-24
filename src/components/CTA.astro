@@ -1,0 +1,76 @@
+---
+interface Props {
+  variant?: 'inline' | 'card';
+}
+
+const { variant = 'card' } = Astro.props;
+---
+
+<div class={`cta cta--${variant}`} data-cta>
+  <p class="cta-title" data-uz="SEO yoki AEO bo'yicha savol bormi?" data-en="Have an SEO or AEO question?">
+    SEO yoki AEO bo'yicha savol bormi?
+  </p>
+  <p class="cta-sub" data-uz="30 daqiqalik bepul konsultatsiya — Telegram'da yozing." data-en="30 minutes free consultation — message me on Telegram.">
+    30 daqiqalik bepul konsultatsiya — Telegram'da yozing.
+  </p>
+  <a class="cta-btn" href="https://t.me/shavkatovio" target="_blank" rel="noopener noreferrer">
+    <span data-uz="Telegram'ga yozish" data-en="Message on Telegram">Telegram'ga yozish</span>
+    <span aria-hidden="true">→</span>
+  </a>
+</div>
+
+<script>
+  const setCtaLang = (lang: string) => {
+    document.querySelectorAll('[data-cta] [data-uz]').forEach((el) => {
+      const e = el as HTMLElement;
+      e.textContent = lang === 'en' ? (e.dataset.en || '') : (e.dataset.uz || '');
+    });
+  };
+  setCtaLang(localStorage.getItem('lang') || 'uz');
+  document.addEventListener('langchange', (e: any) => setCtaLang(e.detail));
+</script>
+
+<style>
+  .cta {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .cta--inline {
+    padding: 1rem 1.25rem;
+  }
+
+  .cta-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin: 0 0 0.4rem;
+  }
+
+  .cta-sub {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+    line-height: 1.5;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-text);
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--color-text);
+  }
+</style>

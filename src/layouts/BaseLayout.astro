@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions, fade } from 'astro:transitions';
+import { ClientRouter, fade } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title,
-  description = "Shavkatov - Personal blog about technology and development",
+  description = "SEO, AEO va GEO bo'yicha maslahatchi — O'zbek bizneslarini Google va AI qidiruvda o'sib chiqaraman.",
   ogImage = "/og-image.jpg",
   article = false
 } = Astro.props;
@@ -74,13 +74,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "@type": "Person",
       "name": "Shavkatov Fayzulloh",
       "additionalName": "Furqat o'g'li",
-      "jobTitle": "Project Manager",
+      "jobTitle": "SEO, AEO & GEO Consultant",
       "url": "https://shavkatov.io",
       "image": "https://shavkatov.io/og-image.jpg",
+      "knowsAbout": [
+        "Search Engine Optimization",
+        "Answer Engine Optimization",
+        "Generative Engine Optimization",
+        "Project Management"
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Tashkent",
         "addressCountry": "UZ"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Darslinker",
+        "url": "https://darslinker.uz"
       },
       "sameAs": [
         "https://t.me/shavkatovio",
@@ -104,7 +115,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     })(window, document, "clarity", "script", "vf4tq5adhl");
   </script>
 
-  <ViewTransitions />
+  <ClientRouter />
   <slot name="head" />
 </head>
 <body>

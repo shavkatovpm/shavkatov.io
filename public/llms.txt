@@ -1,18 +1,37 @@
 # Shavkatov Fayzulloh
 
 ## About
-Shavkatov Fayzulloh Furqat o'g'li — 24 years old Project Manager based in Tashkent, Uzbekistan.
-He manages and builds IT projects. He is the founder of several IT projects.
-He has 3+ years of professional experience in IT and Marketing.
+Shavkatov Fayzulloh Furqat o'g'li is an SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization) consultant based in Tashkent, Uzbekistan. He helps Uzbek small and medium businesses grow through Google search and AI-powered search engines (ChatGPT, Perplexity, Google AI Overviews).
 
-## Website
+He is the founder of Darslinker.uz and runs SEO/AEO/GEO experiments on his own startup, applying the same proven playbook to client work. 3+ years of project management experience in IT and marketing.
+
+## Specializations
+- **SEO (Search Engine Optimization):** Technical SEO, content strategy, local SEO for the Uzbek market, Google Business Profile optimization
+- **AEO (Answer Engine Optimization):** Content structuring for citations in ChatGPT, Perplexity, Google AI Overviews
+- **GEO (Generative Engine Optimization):** Future-of-search content strategies for generative AI engines
+- **Project Management:** Systematic execution of digital growth projects
+
+## Services
+- SEO/AEO audits for Uzbek SMBs
+- Search visibility growth (Google + AI engines)
+- Founder consultation on content + technical SEO
+- Custom SEO/AEO playbooks based on Darslinker.uz learnings
+
+## Website Sections
 - Homepage: https://shavkatov.io
 - About: https://shavkatov.io/about
-- Blog: https://shavkatov.io/blog
+- Blog (SEO/AEO insights + personal): https://shavkatov.io/blog
 
-## Social
+## Contact
 - Telegram: https://t.me/shavkatovio
 - Instagram: https://instagram.com/shavkatov.io
 
-## Blog
-He writes articles about technology, programming, and personal experiences in Uzbek and English languages.
+## Content Approach
+The blog publishes in Uzbek (primary) and English (secondary) with five content types:
+1. Educational — fundamental and advanced SEO/AEO knowledge
+2. Service CTA — articles funneling to consultation services
+3. Niche-targeted — vertical-specific SEO guides (clinics, e-commerce, agencies, etc.)
+4. Personal cases — real Darslinker.uz experiments and lessons
+5. News — SEO/AEO industry news translated and analyzed for the Uzbek market
+
+Posts are AEO-optimized: TL;DR upfront, FAQ sections with schema, citation-friendly structure, sources for all claims.
