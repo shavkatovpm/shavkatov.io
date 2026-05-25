@@ -84,8 +84,8 @@ import '../styles/global.css';
   <canvas id="splashCanvas"></canvas>
   <Header />
   <section class="hero" transition:animate={fade({ duration: '0.4s' })}>
-    <p class="hero-tagline" id="heroTagline">Bizneslarni Google va AI'da<br />top 10-talikka chiqaraman</p>
     <div class="hero-content container">
+      <p class="hero-tagline" id="heroTagline"><span class="tag-line1" id="taglineLine1">Bizneslarni Google va AI'da</span> <span class="tag-line2" id="taglineLine2">top 10-talikka chiqaraman</span></p>
       <h1 class="hero-name" id="heroName">Shavkatov Fayzulloh</h1>
       <div class="hero-links" id="heroLinks">
         <a href="/services" id="servicesLink">Xizmatlar</a>
@@ -140,10 +140,11 @@ import '../styles/global.css';
     const updateNavText = (lang: string) => {
       if (aboutLink) aboutLink.textContent = lang === 'en' ? 'About' : 'Haqida';
       if (servicesLink) servicesLink.textContent = lang === 'en' ? 'Services' : 'Xizmatlar';
-      if (heroTagline) {
-        heroTagline.innerHTML = lang === 'en'
-          ? 'I get businesses into top 10<br />on Google and AI'
-          : 'Bizneslarni Google va AI\'da<br />top 10-talikka chiqaraman';
+      const line1 = document.getElementById('taglineLine1');
+      const line2 = document.getElementById('taglineLine2');
+      if (line1 && line2) {
+        line1.textContent = lang === 'en' ? 'I get businesses into top 10' : 'Bizneslarni Google va AI\'da';
+        line2.textContent = lang === 'en' ? 'on Google and AI' : 'top 10-talikka chiqaraman';
       }
     };
     updateNavText(localStorage.getItem('lang') || 'uz');
@@ -190,24 +191,17 @@ import '../styles/global.css';
   }
 
   .hero-tagline {
-    position: absolute;
-    top: 28%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: calc(100% - 2rem);
-    text-align: center;
     font-family: 'Poppins', sans-serif;
     font-size: clamp(0.95rem, 1.6vw, 1.1rem);
     font-weight: 300;
     color: #b3b3b3;
-    margin: 0;
+    margin: 0 auto 2.5rem;
     line-height: 1.5;
     letter-spacing: 0.01em;
+    white-space: nowrap;
     opacity: 0;
     filter: blur(8px);
     transition: opacity 0.25s ease-out, filter 0.25s ease-out;
-    z-index: 2;
   }
 
   .hero-tagline.visible {
@@ -215,13 +209,13 @@ import '../styles/global.css';
     filter: blur(0px);
   }
 
-  .hero-tagline br {
-    display: none;
-  }
-
   @media (max-width: 640px) {
-    .hero-tagline br {
-      display: initial;
+    .hero-tagline {
+      white-space: normal;
+    }
+
+    .hero-tagline .tag-line2 {
+      display: block;
     }
   }
 
