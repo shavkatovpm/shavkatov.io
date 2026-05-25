@@ -70,13 +70,26 @@ import '../styles/global.css';
       ]
     }
   </script>
-  <!-- Microsoft Clarity -->
+  <!-- Microsoft Clarity (deferred until after load) -->
   <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "vf4tq5adhl");
+    (function () {
+      function loadClarity() {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vf4tq5adhl");
+      }
+      function schedule() {
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(loadClarity, { timeout: 3000 });
+        } else {
+          setTimeout(loadClarity, 1500);
+        }
+      }
+      if (document.readyState === 'complete') schedule();
+      else window.addEventListener('load', schedule, { once: true });
+    })();
   </script>
   <ClientRouter />
 </head>
@@ -98,8 +111,6 @@ import '../styles/global.css';
 </html>
 
 <script>
-  import { initSplashCursor } from '../scripts/splash-cursor.js';
-
   let isFirstLoad = true;
 
   function setup() {
@@ -108,7 +119,18 @@ import '../styles/global.css';
     if (!heroName) return;
 
     const canvas = document.getElementById('splashCanvas') as HTMLCanvasElement;
-    if (canvas) initSplashCursor(canvas);
+    if (canvas) {
+      const idleInit = () => {
+        import('../scripts/splash-cursor.js').then(({ initSplashCursor }) => {
+          initSplashCursor(canvas);
+        });
+      };
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(idleInit, { timeout: 2000 });
+      } else {
+        setTimeout(idleInit, 500);
+      }
+    }
 
     const heroLinks = document.getElementById('heroLinks');
     const heroTagline = document.getElementById('heroTagline');
@@ -181,7 +203,7 @@ import '../styles/global.css';
     left: 0;
     right: 0;
     bottom: 0;
-    padding-bottom: 10%;
+    padding-bottom: 30vh;
   }
 
   .hero-content {
