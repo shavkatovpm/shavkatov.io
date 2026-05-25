@@ -85,7 +85,7 @@ import '../styles/global.css';
   <Header />
   <section class="hero" transition:animate={fade({ duration: '0.4s' })}>
     <div class="hero-content container">
-      <p class="hero-tagline" id="heroTagline">Bizneslarni Google va AI'da topga chiqaraman</p>
+      <p class="hero-tagline" id="heroTagline">Bizneslarni Google va AI'da<br />top 10-talikka chiqaraman</p>
       <h1 class="hero-name" id="heroName">Shavkatov Fayzulloh</h1>
       <div class="hero-links" id="heroLinks">
         <a href="/services" id="servicesLink">Xizmatlar</a>
@@ -141,9 +141,9 @@ import '../styles/global.css';
       if (aboutLink) aboutLink.textContent = lang === 'en' ? 'About' : 'Haqida';
       if (servicesLink) servicesLink.textContent = lang === 'en' ? 'Services' : 'Xizmatlar';
       if (heroTagline) {
-        heroTagline.textContent = lang === 'en'
-          ? 'I rank businesses on top of Google and AI'
-          : 'Bizneslarni Google va AI\'da topga chiqaraman';
+        heroTagline.innerHTML = lang === 'en'
+          ? 'I get businesses into top 10<br />on Google and AI'
+          : 'Bizneslarni Google va AI\'da<br />top 10-talikka chiqaraman';
       }
     };
     updateNavText(localStorage.getItem('lang') || 'uz');
