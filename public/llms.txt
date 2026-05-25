@@ -1,7 +1,7 @@
 # Shavkatov Fayzulloh
 
 ## About
-Shavkatov Fayzulloh Furqat o'g'li is an SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization) consultant based in Tashkent, Uzbekistan. He helps Uzbek small and medium businesses grow through Google search and AI-powered search engines (ChatGPT, Perplexity, Google AI Overviews).
+Shavkatov Fayzulloh Furqat o'g'li is an SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization) consultant based in Tashkent, Uzbekistan. He helps small and medium businesses grow through Google search and AI-powered search engines (ChatGPT, Perplexity, Google AI Overviews).
 
 He is the founder of Darslinker.uz and runs SEO/AEO/GEO experiments on his own startup, applying the same proven playbook to client work. 3+ years of project management experience in IT and marketing.
 
@@ -12,7 +12,7 @@ He is the founder of Darslinker.uz and runs SEO/AEO/GEO experiments on his own s
 - **Project Management:** Systematic execution of digital growth projects
 
 ## Services
-- SEO/AEO audits for Uzbek SMBs
+- SEO/AEO audits for SMBs
 - Search visibility growth (Google + AI engines)
 - Founder consultation on content + technical SEO
 - Custom SEO/AEO playbooks based on Darslinker.uz learnings
@@ -23,7 +23,7 @@ He is the founder of Darslinker.uz and runs SEO/AEO/GEO experiments on his own s
 - Blog (SEO/AEO insights + personal): https://shavkatov.io/blog
 
 ## Contact
-- Telegram: https://t.me/shavkatovio
+- Telegram: https://t.me/shavkatov_ff
 - Instagram: https://instagram.com/shavkatov.io
 
 ## Content Approach

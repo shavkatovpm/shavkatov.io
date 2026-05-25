@@ -123,12 +123,7 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
 
     <section class="author-bio">
       <p>
-        <strong>Shavkatov Fayzulloh</strong> — SEO, AEO va GEO bo'yicha maslahatchi. Darslinker.uz asoschisi. O'zbek bizneslarini Google va AI qidiruvda o'sib chiqaradi.
-      </p>
-      <p class="author-links">
-        <a href="https://t.me/shavkatovio" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <span>·</span>
-        <a href="/about">Haqida</a>
+        <strong>Shavkatov Fayzulloh</strong> — Bizneslarni Google va AI qidiruv tizimlarida topga chiqaraman.
       </p>
     </section>
 
@@ -244,6 +239,80 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
     margin: 1.5rem 0;
   }
 
+  /* Table styles — applies to all markdown tables in posts */
+  .content :global(.table-wrap) {
+    margin: 1.75rem 0;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.93rem;
+    margin: 0;
+  }
+
+  .content :global(thead) {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .content :global(th) {
+    padding: 0.85rem 1.1rem;
+    text-align: left;
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .content :global(td) {
+    padding: 0.85rem 1.1rem;
+    color: var(--color-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    line-height: 1.55;
+    vertical-align: top;
+  }
+
+  .content :global(tbody tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .content :global(tbody tr:hover td) {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .content :global(td:first-child) {
+    color: var(--color-text);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Fallback for tables without wrapper */
+  .content :global(table:not(.table-wrap > table)) {
+    margin: 1.75rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  @media (max-width: 640px) {
+    .content :global(th),
+    .content :global(td) {
+      padding: 0.7rem 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .content :global(td:first-child) {
+      white-space: normal;
+    }
+  }
+
   .faq {
     margin-top: 3rem;
   }
@@ -290,15 +359,15 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
   }
 
   .author-bio {
-    margin-top: 2.5rem;
-    padding: 1.25rem 0;
+    margin-top: 2rem;
+    padding: 1rem 0;
     border-top: 1px solid rgba(118, 118, 118, 0.3);
     color: var(--color-secondary);
     font-size: 0.9rem;
   }
 
   .author-bio p {
-    margin: 0 0 0.4rem;
+    margin: 0;
     line-height: 1.6;
   }
 
@@ -306,19 +375,14 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
     color: var(--color-text);
   }
 
-  .author-links {
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
-  }
-
-  .author-links a {
+  .author-bio a {
     color: var(--color-secondary);
     text-decoration: underline;
     text-underline-offset: 3px;
+    white-space: nowrap;
   }
 
-  .author-links a:hover {
+  .author-bio a:hover {
     color: var(--color-text);
   }
 

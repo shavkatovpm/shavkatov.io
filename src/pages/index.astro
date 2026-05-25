@@ -14,7 +14,7 @@ import '../styles/global.css';
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <title>Shavkatov Fayzulloh — SEO, AEO va GEO bo'yicha maslahatchi</title>
-  <meta name="description" content="O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. SEO, AEO va GEO bo'yicha amaliy maslahat va xizmatlar. Darslinker.uz asoschisi." />
+  <meta name="description" content="Bizneslarni Google va AI qidiruv tizimlarida topga chiqaraman. SEO, AEO va GEO bo'yicha amaliy maslahat va xizmatlar." />
   <meta name="author" content="Shavkatov Fayzulloh" />
   <link rel="canonical" href="https://shavkatov.io/" />
 
@@ -22,14 +22,14 @@ import '../styles/global.css';
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://shavkatov.io/" />
   <meta property="og:title" content="Shavkatov Fayzulloh — SEO, AEO va GEO bo'yicha maslahatchi" />
-  <meta property="og:description" content="O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. Darslinker.uz asoschisi." />
+  <meta property="og:description" content="Bizneslarni Google va AI qidiruv tizimlarida topga chiqaraman." />
   <meta property="og:image" content="https://shavkatov.io/og-image.jpg" />
   <meta property="og:locale" content="uz_UZ" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Shavkatov Fayzulloh — SEO, AEO va GEO bo'yicha maslahatchi" />
-  <meta name="twitter:description" content="O'zbek bizneslarini Google va AI qidiruv tizimlarida o'sib chiqaraman. Darslinker.uz asoschisi." />
+  <meta name="twitter:description" content="Bizneslarni Google va AI qidiruv tizimlarida topga chiqaraman." />
   <meta name="twitter:image" content="https://shavkatov.io/og-image.jpg" />
 
   <meta name="theme-color" content="#000000" />
@@ -44,7 +44,7 @@ import '../styles/global.css';
       "name": "Shavkatov Fayzulloh",
       "additionalName": "Furqat o'g'li",
       "jobTitle": "SEO, AEO & GEO Consultant",
-      "description": "SEO, AEO and GEO consultant helping Uzbek SMBs grow through search. Founder of Darslinker.uz. 3+ years of project management experience in IT and marketing.",
+      "description": "SEO, AEO and GEO consultant helping SMBs grow through search. Founder of Darslinker.uz. 3+ years of project management experience in IT and marketing.",
       "url": "https://shavkatov.io",
       "image": "https://shavkatov.io/og-image.jpg",
       "knowsAbout": [
@@ -65,7 +65,7 @@ import '../styles/global.css';
         "url": "https://darslinker.uz"
       },
       "sameAs": [
-        "https://t.me/shavkatovio",
+        "https://t.me/shavkatov_ff",
         "https://instagram.com/shavkatov.io"
       ]
     }
@@ -85,6 +85,7 @@ import '../styles/global.css';
   <Header />
   <section class="hero" transition:animate={fade({ duration: '0.4s' })}>
     <div class="hero-content container">
+      <p class="hero-tagline" id="heroTagline">Bizneslarni Google va AI'da topga chiqaraman</p>
       <h1 class="hero-name" id="heroName">Shavkatov Fayzulloh</h1>
       <div class="hero-links" id="heroLinks">
         <a href="/services" id="servicesLink">Xizmatlar</a>
@@ -110,6 +111,7 @@ import '../styles/global.css';
     if (canvas) initSplashCursor(canvas);
 
     const heroLinks = document.getElementById('heroLinks');
+    const heroTagline = document.getElementById('heroTagline');
     const headerEl = document.querySelector('header');
 
     if (isFirstLoad) {
@@ -117,12 +119,14 @@ import '../styles/global.css';
       isFirstLoad = false;
 
       // Darhol boshlanadi — hammasi birga
+      heroTagline?.classList.add('visible');
       heroName.classList.add('visible');
       heroLinks?.classList.add('visible');
       headerEl?.style.setProperty('opacity', '1');
       headerEl?.style.setProperty('filter', 'blur(0px)');
     } else {
       // Ichki sahifadan qaytganda: hero elementlarini darhol ko'rsatish (transition o'chiriladi)
+      if (heroTagline) heroTagline.style.cssText = 'opacity:1;filter:none;transition:none';
       heroName.style.cssText = 'opacity:1;filter:none;transition:none';
       heroLinks!.style.cssText = 'opacity:1;filter:none;transition:none';
       headerEl!.style.setProperty('opacity', '1');
@@ -136,6 +140,11 @@ import '../styles/global.css';
     const updateNavText = (lang: string) => {
       if (aboutLink) aboutLink.textContent = lang === 'en' ? 'About' : 'Haqida';
       if (servicesLink) servicesLink.textContent = lang === 'en' ? 'Services' : 'Xizmatlar';
+      if (heroTagline) {
+        heroTagline.textContent = lang === 'en'
+          ? 'I help businesses rank top on Google and AI search engines'
+          : 'Bizneslarni Google va AI\'da topga chiqaraman';
+      }
     };
     updateNavText(localStorage.getItem('lang') || 'uz');
     document.addEventListener('langchange', (e: any) => updateNavText(e.detail));
@@ -178,6 +187,25 @@ import '../styles/global.css';
     text-align: center;
     position: relative;
     z-index: 2;
+  }
+
+  .hero-tagline {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    font-weight: 300;
+    color: #b3b3b3;
+    margin: 0 auto 1rem;
+    max-width: 36rem;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    filter: blur(8px);
+    transition: opacity 0.25s ease-out, filter 0.25s ease-out;
+  }
+
+  .hero-tagline.visible {
+    opacity: 1;
+    filter: blur(0px);
   }
 
   .hero-name {
