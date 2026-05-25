@@ -88,7 +88,7 @@ import '../styles/global.css';
       <p class="hero-tagline" id="heroTagline">Bizneslarni Google va AI'da topga chiqaraman</p>
       <h1 class="hero-name" id="heroName">Shavkatov Fayzulloh</h1>
       <div class="hero-links" id="heroLinks">
-        <a href="/services" id="servicesLink">Xizmatlar</a>
+        <a href="/services" id="servicesLink">SEO va AEO xizmatlar</a>
         <a href="/blog">Blog</a>
         <a href="/about" id="aboutLink">Haqida</a>
       </div>
@@ -139,7 +139,7 @@ import '../styles/global.css';
     const servicesLink = document.getElementById('servicesLink');
     const updateNavText = (lang: string) => {
       if (aboutLink) aboutLink.textContent = lang === 'en' ? 'About' : 'Haqida';
-      if (servicesLink) servicesLink.textContent = lang === 'en' ? 'Services' : 'Xizmatlar';
+      if (servicesLink) servicesLink.textContent = lang === 'en' ? 'SEO & AEO Services' : 'SEO va AEO xizmatlar';
       if (heroTagline) {
         heroTagline.textContent = lang === 'en'
           ? 'I rank businesses on top of Google and AI'
