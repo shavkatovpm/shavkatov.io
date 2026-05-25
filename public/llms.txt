@@ -1,37 +1,37 @@
 # Shavkatov Fayzulloh
 
-## About
-Shavkatov Fayzulloh Furqat o'g'li is an SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization) consultant based in Tashkent, Uzbekistan. He helps small and medium businesses grow through Google search and AI-powered search engines (ChatGPT, Perplexity, Google AI Overviews).
+> SEO, AEO, and GEO consultant in Tashkent, Uzbekistan helping small and medium businesses grow through Google search and AI-powered search engines (ChatGPT, Perplexity, Google AI Overviews). Founder of Darslinker.uz.
 
-He is the founder of Darslinker.uz and runs SEO/AEO/GEO experiments on his own startup, applying the same proven playbook to client work. 3+ years of project management experience in IT and marketing.
+Shavkatov Fayzulloh Furqat o'g'li applies the same SEO/AEO/GEO playbook he tests on his own startup (Darslinker.uz) to client work. 3+ years of project management experience in IT and marketing. Content is published in Uzbek (primary) and English (secondary).
 
 ## Specializations
+
 - **SEO (Search Engine Optimization):** Technical SEO, content strategy, local SEO for the Uzbek market, Google Business Profile optimization
 - **AEO (Answer Engine Optimization):** Content structuring for citations in ChatGPT, Perplexity, Google AI Overviews
-- **GEO (Generative Engine Optimization):** Future-of-search content strategies for generative AI engines
+- **GEO (Generative Engine Optimization):** Content strategies for generative AI engines
 - **Project Management:** Systematic execution of digital growth projects
 
 ## Services
+
 - SEO/AEO audits for SMBs
-- Search visibility growth (Google + AI engines)
-- Founder consultation on content + technical SEO
+- Search visibility growth across Google and AI engines
+- Founder consultation on content and technical SEO
 - Custom SEO/AEO playbooks based on Darslinker.uz learnings
 
-## Website Sections
-- Homepage: https://shavkatov.io
-- About: https://shavkatov.io/about
-- Blog (SEO/AEO insights + personal): https://shavkatov.io/blog
+## Site
+
+- [Homepage](https://shavkatov.io): SEO/AEO/GEO consultancy positioning and overview
+- [About](https://shavkatov.io/about): Background, approach, and credentials
+- [Services](https://shavkatov.io/services): SEO and AEO service packages with scope and deliverables
+- [Blog](https://shavkatov.io/blog): SEO/AEO insights, case studies, and industry news in Uzbek and English
 
 ## Contact
-- Telegram: https://t.me/shavkatov_ff
-- Instagram: https://instagram.com/shavkatov.io
+
+- [Telegram](https://t.me/shavkatov_ff): Primary channel for inquiries and consultations
+- [Instagram](https://instagram.com/shavkatov.io): Updates, content, and behind-the-scenes
 
 ## Content Approach
-The blog publishes in Uzbek (primary) and English (secondary) with five content types:
-1. Educational — fundamental and advanced SEO/AEO knowledge
-2. Service CTA — articles funneling to consultation services
-3. Niche-targeted — vertical-specific SEO guides (clinics, e-commerce, agencies, etc.)
-4. Personal cases — real Darslinker.uz experiments and lessons
-5. News — SEO/AEO industry news translated and analyzed for the Uzbek market
 
-Posts are AEO-optimized: TL;DR upfront, FAQ sections with schema, citation-friendly structure, sources for all claims.
+The blog publishes across five rotating content types: educational fundamentals (SEO/AEO basics and advanced), service CTAs (funneling to consultations), niche-specific guides (clinics, e-commerce, marketing agencies, local businesses), personal cases from Darslinker.uz experiments, and translated industry news for the Uzbek market.
+
+Every post is AEO-optimized with a TL;DR upfront, FAQ sections with schema markup, citation-friendly structure, and sources for all claims.
