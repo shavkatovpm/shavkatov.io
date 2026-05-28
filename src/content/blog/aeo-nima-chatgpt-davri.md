@@ -34,7 +34,7 @@ faq_en:
 
 <div class="content-uz">
 
-Bir tanishim do'stiga yozdi: "ChatGPT'dan Toshkentdagi eng yaxshi stomatologiya klinikasini so'radim — sening klinikang ham javob ichida bormi?" Do'sti tekshirdi. Yo'q ekan. 5 ta boshqa klinika tilga olingan: bittasi 12 yil ishlayotgan, ikkitasining bloglari bor ekan, qolganlarining mahalliy media'da intervyusi chiqqan. Sizning klinikangiz haqida AI hatto bir og'iz aytmagan.
+Bir tanishim do'stiga yozdi: "ChatGPT'dan Toshkentdagi eng yaxshi o'quv markazini so'radim — sening o'quv markazing ham javob ichida bormi?" Do'sti tekshirdi. Yo'q ekan. 5 ta boshqa o'quv markaz tilga olingan: bittasi 12 yil ishlayotgan, ikkitasining bloglari bor ekan, qolganlarining mahalliy media'da intervyusi chiqqan. Sizning o'quv markazingiz haqida AI hatto bir og'iz aytmagan.
 
 Bir paytda Google'da birinchi sahifada turardingiz. Endi esa AI sizning nomingizni eslamayapti.
 
@@ -178,7 +178,7 @@ Agar saytingiz AEO'ga tayyorligini bilmoqchi bo'lsangiz — Telegram'da yozing. 
 
 <div class="content-en" style="display: none;">
 
-A friend messaged me: "I asked ChatGPT for the best dental clinic in Tashkent — is your clinic in the answer?" He checked. It wasn't. Five other clinics were named: one has been running 12 years, two have blogs, the rest had press coverage in local media. About your clinic, the AI said nothing.
+A friend messaged me: "I asked ChatGPT for the best training center in Tashkent — is your center in the answer?" He checked. It wasn't. Five other centers were named: one has been running 12 years, two have blogs, the rest had press coverage in local media. About your center, the AI said nothing.
 
 Not long ago you were on Google's first page. Now AI doesn't even remember your name.
 
