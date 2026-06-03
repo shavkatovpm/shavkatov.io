@@ -14,7 +14,7 @@ faq:
   - question: "Domain Authority endi ahamiyatga ega emasmi?"
     answer: "AI uchun deyarli ega emas. Domain Authority — Moz o'ylab topgan uchinchi tomon ko'rsatkichi, Google rasman ishlatmaydi, LLM'lar esa umuman e'tibor bermaydi. AI sizning sohangizdagi ishonchli nashrlar va saytlar sizni mavzuga oid tarzda eslab turishiga qaraydi — link bilan yoki linksiz. Domain Authority raqamini quvish o'rniga tabiiy mention va ijobiy sentimentga sarmoya kiriting."
   - question: "Next.js yoki React saytim AI uchun muammo bo'ladimi?"
-    answer: "Agar muhim kontent faqat brauzerda JavaScript orqali yuklansa — ha. LLM botlari (GPTBot, ClaudeBot va boshqalar) JavaScript'ni Googlebot kabi yaxshi render qila olmaydi. Narx sahifasi, bosh sahifa yoki FAQ JS bilan yuklanса, AI uchun ko'rinmas qoladi va javobida ishlatilmaydi. Yechim: muhim kontentni SSR yoki SSG bilan server tomonda render qilish va AI botga to'liq HTML yetishini tekshirish."
+    answer: "Agar muhim kontent faqat brauzerda JavaScript orqali yuklansa — ha. LLM botlari (GPTBot, ClaudeBot va boshqalar) JavaScript'ni Googlebot kabi yaxshi render qila olmaydi. Narx sahifasi, bosh sahifa yoki FAQ JS bilan yuklansa, AI uchun ko'rinmas qoladi va javobida ishlatilmaydi. Yechim: muhim kontentni SSR yoki SSG bilan server tomonda render qilish va AI botga to'liq HTML yetishini tekshirish."
   - question: "AI bilan kontent yozsam bo'ladimi?"
     answer: "Yordamchi sifatida — ha, ommaviy ishlab chiqarish uchun — yo'q. Lily Ray tahliliga ko'ra, AI 'slop' (sifatsiz ommaviy kontent) 3-4 oy trafik beradi, 6-oyga borib qulaydi va ko'pincha baseline'dan ham pastga tushadi. Bundan tashqari, odam kontentni 'AI yozgan' deb his qilsa, engagement keskin tushadi. Qoida: odam uchun yoz, AI uchun qadoqla — original tajriba va datani AI o'rnini bosa olmaydi."
   - question: "GEO natijasini qanday o'lchayman?"
@@ -44,7 +44,7 @@ Search Everywhere Optimization — odamlar javobni endi faqat Google'dan emas, b
 
 Avval rasm sodda edi: Google'da top'ga chiqasiz — tamom. Endi "discovery" (brendni topish jarayoni) tarqoq holatga keldi. Bir odam ertalab Google'da qidiradi, tushlikda ChatGPT'dan so'raydi, kechqurun YouTube'da sharh ko'radi, qaror qabul qilishdan oldin Reddit'ga kirib real tajribani o'qiydi. Siz bu zanjirning faqat bitta bo'g'inida bo'lsangiz — yo'qotasiz.
 
-[AEO](/blog/aeo-nima-chatgpt-davri) va [SEO asoslari](/blog/seo-nima-ozbekiston-2026) bu rasmnи bir qism — bu post ularni butun manzaraga ulaydi.
+[AEO](/blog/aeo-nima-chatgpt-davri) va [SEO asoslari](/blog/seo-nima-ozbekiston-2026) bu rasmning bir qismi — bu post ularni butun manzaraga ulaydi.
 
 ## Qidiruv qayerga tarqaldi — raqamlar
 
