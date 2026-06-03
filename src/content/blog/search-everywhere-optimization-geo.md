@@ -155,7 +155,7 @@ Ya'ni qisqa muddatli yutuq — uzoq muddatli zarar.
 
 **3. Eski "vanity" hisobot.** Faqat trafikka qarash — endi yo'l-yo'riq bermaydigan ko'rsatkich.
 
-**4. Eng nozik nüans: "written by AI" hissi.** Odam kontentni "AI yozgan" deb his qilsa, ishonchi uziladi — "AI yozgan" yorlig'i engagementni keskin tushirgan. Texnik jihatdan AI yordam bersa ham, natija inson ovozida yangrashi kerak.
+**4. Eng nozik nyuans: "written by AI" hissi.** Odam kontentni "AI yozgan" deb his qilsa, ishonchi uziladi — "AI yozgan" yorlig'i engagementni keskin tushirgan. Texnik jihatdan AI yordam bersa ham, natija inson ovozida yangrashi kerak.
 
 ## Yangi o'lchov tizimi
 
