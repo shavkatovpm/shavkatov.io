@@ -180,9 +180,9 @@ Qo'shimcha 6 yo'nalishni kuzating:
 |---|---|---|
 | 1-bosqich | 1-2 hafta | AI visibility auditi: share of voice o'lchash, citation ≠ mention farqini ajratish, barqaror reytingda tushayotgan CTRni topish, entity aniqligini tekshirish, EEAT'ni mustahkamlash |
 | 2-bosqich | Keyingi 30 kun | AI iqtibos keltiradigan kontent yaratish: original research, eski kontentni refresh qilish |
-| 3-bosqich | Keyingi 30 kun | Amplifikatsiya: autoritet strategiyasi, citation/mention olish, SEO + kontent + PR jamoalarini birlashtirish (silos bo'lmasin) |
+| 3-bosqich | Keyingi 30 kun | Amplifikatsiya: autoritet strategiyasi, citation/mention olish, SEO + kontent + PR jamoalarini birlashtirish (alohida-alohida ishlamasin) |
 
-Eng muhim qoidasi: **jamoalar silos bo'lmasin.** SEO, kontent va PR alohida ishlasa, GEO ishlamaydi — bularning hammasi bitta strategiya.
+Eng muhim qoidasi: **jamoalar alohida-alohida, bir-biridan ajralib ishlamasin.** SEO, kontent va PR alohida ishlasa, GEO ishlamaydi — bularning hammasi bitta strategiya.
 
 ## Qisqa qo'shimchalar
 
