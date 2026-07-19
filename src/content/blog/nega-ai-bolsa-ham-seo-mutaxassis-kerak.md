@@ -34,6 +34,8 @@ faq_en:
 
 <div class="content-uz">
 
+![Dasturchi va AI robot yonma-yon noutbukda kod yozmoqda — "Nega AI bo'lsa ham odamlar dasturchilardan xizmat sotib oladi?"](/blog/nega-ai-bolsa-ham-seo-mutaxassis-kerak.jpg)
+
 Nega AI bo'lsa ham odamlar dasturchilardan xizmat sotib oladi?
 
 Nega kompaniya rahbari sotishni bilsa ham, sotuvchilar jamoasini ishga oladi?
@@ -106,6 +108,8 @@ Agar saytingiz uchun AI emas, aniq strategiya kerak bo'lsa — Telegram'da yozin
 </div>
 
 <div class="content-en" style="display: none;">
+
+![A developer and an AI robot coding side by side at laptops — "Why do people still buy services from developers even though AI exists?"](/blog/nega-ai-bolsa-ham-seo-mutaxassis-kerak.jpg)
 
 Why do people still buy services from developers even though AI exists?
 
