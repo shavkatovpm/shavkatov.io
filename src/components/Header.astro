@@ -1,16 +1,30 @@
 <header transition:persist transition:animate="none">
   <nav class="container">
     <a href="/" class="logo">shavkatov.io</a>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="/services/" data-nav="/services/" data-uz="Xizmatlar" data-en="Services">Xizmatlar</a>
-      <a href="/blog/" data-nav="/blog/" data-uz="Blog" data-en="Blog">Blog</a>
       <a href="/about/" data-nav="/about/" data-uz="Haqida" data-en="About">Haqida</a>
+      <a href="/blog/" data-nav="/blog/" data-uz="Blog" data-en="Blog">Blog</a>
     </div>
     <div class="nav-right">
       <button class="lang-btn" id="langToggle" aria-label="Switch language">🇺🇿</button>
+      <button
+        class="menu-btn"
+        id="menuToggle"
+        aria-label="Menyu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
     </div>
   </nav>
 </header>
+
+<!-- Xira fon header'dan TASHQARIDA turishi shart: backdrop-filter faqat o'z
+     stacking konteksti ortidagini xiralashtiradi, header ichida bo'lsa sahifa
+     mazmuniga yetib bormaydi. -->
+<div class="nav-scrim" aria-hidden="true"></div>
 
 <script>
   // Header transition:persist bilan saqlanadi — shuning uchun matn va aktiv holat
@@ -34,9 +48,18 @@
     });
   };
 
+  const setMenu = (open: boolean) => {
+    const header = document.querySelector('header');
+    const btn = document.getElementById('menuToggle');
+    if (!header || !btn) return;
+    header.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  };
+
   const refreshHeader = () => {
     applyHeaderLang(localStorage.getItem('lang') || 'uz');
     markActiveNav();
+    setMenu(false); // navigatsiyadan keyin menyu yopiq bo'lsin
   };
 
   // Barcha eventlar document delegation orqali — persist dublikat muammosini hal qiladi
@@ -45,8 +68,24 @@
 
     document.addEventListener('astro:page-load', refreshHeader);
 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenu(false);
+    });
+
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
+
+      // Menyu tugmasi
+      if (target.closest('#menuToggle')) {
+        const open = document.querySelector('header')?.classList.contains('menu-open');
+        setMenu(!open);
+        return;
+      }
+
+      // Havola, xira fon yoki header tashqarisi bosilsa — yopamiz
+      if (target.closest('.nav-links a') || target.closest('.nav-scrim') || !target.closest('header')) {
+        setMenu(false);
+      }
 
       // Language toggle
       if (target.id === 'langToggle' || target.closest('#langToggle')) {
@@ -126,7 +165,95 @@
     transform: scale(1.1);
   }
 
-  /* Tor ekranda uchala blok bitta qatorda sig'ishi uchun */
+  /* Menyu ochilganda orqa fon xiralashadi. header ichida turadi, shuning
+     uchun uning stacking kontekstidan foydalanadi — nav undan yuqorida qoladi. */
+  .nav-scrim {
+    position: fixed;
+    inset: 0;
+    /* header 50 da — panel va logotip xira fondan yuqorida qoladi */
+    z-index: 40;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s;
+  }
+
+  header.menu-open ~ .nav-scrim {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  @media (min-width: 641px) {
+    .nav-scrim {
+      display: none;
+    }
+  }
+
+  /* Burger tugmasi — faqat tor ekranda ko'rinadi, bayroqning o'ng tomonida */
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.35rem;
+    margin: -0.35rem;
+    color: #b3b3b3;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  .menu-btn:hover {
+    color: var(--color-text);
+  }
+
+  .menu-icon {
+    display: block;
+    position: relative;
+    width: 18px;
+    height: 12px;
+  }
+
+  .menu-icon span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.25s ease, opacity 0.15s ease;
+  }
+
+  .menu-icon span:nth-child(1) {
+    top: 0;
+  }
+
+  .menu-icon span:nth-child(2) {
+    top: 50%;
+    margin-top: -0.75px;
+  }
+
+  .menu-icon span:nth-child(3) {
+    bottom: 0;
+  }
+
+  /* Ochilganda burger X ga aylanadi */
+  header.menu-open .menu-icon span:nth-child(1) {
+    transform: translateY(5.25px) rotate(45deg);
+  }
+
+  header.menu-open .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  header.menu-open .menu-icon span:nth-child(3) {
+    transform: translateY(-5.25px) rotate(-45deg);
+  }
+
+  /* Tor ekran: nav havolalari ochiladigan panelga aylanadi */
   @media (max-width: 640px) {
     nav {
       padding: 0 1rem;
@@ -136,16 +263,88 @@
       font-size: 0.95rem;
     }
 
+    .nav-right {
+      gap: 0.85rem;
+    }
+
+    .menu-btn {
+      display: inline-flex;
+    }
+
+    /* Havolalar HTML'da o'z joyida qoladi — faqat panelga ko'chadi */
     .nav-links {
-      gap: 0.75rem;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 0.25rem 1rem 0.6rem;
+      text-align: right;
+      background: #000000;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+
+    header.menu-open .nav-links {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
     }
 
     .nav-links a {
-      font-size: 0.8rem;
+      font-size: 0.95rem;
+      padding: 0.7rem 0.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .nav-right {
-      gap: 0.6rem;
+    .nav-links a:last-child {
+      border-bottom: none;
+    }
+
+    /* Havolalar navbatma-navbat chiqadi */
+    header.menu-open .nav-links a {
+      animation: menuItemIn 0.25s ease-out both;
+    }
+
+    header.menu-open .nav-links a:nth-child(1) {
+      animation-delay: 0.03s;
+    }
+
+    header.menu-open .nav-links a:nth-child(2) {
+      animation-delay: 0.07s;
+    }
+
+    header.menu-open .nav-links a:nth-child(3) {
+      animation-delay: 0.11s;
+    }
+
+    /* O'ngga tekislangani uchun havolalar ham o'ngdan suriladi */
+    @keyframes menuItemIn {
+      from {
+        opacity: 0;
+        transform: translateX(12px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu-icon span,
+    .nav-links {
+      transition: none;
+    }
+
+    header.menu-open .nav-links a {
+      animation: none;
     }
   }
 
