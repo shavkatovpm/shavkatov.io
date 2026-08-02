@@ -297,43 +297,15 @@
       transform: none;
     }
 
+    /* Desktopdagi 0.95rem dan 50% kattaroq */
     .nav-links a {
-      font-size: 0.95rem;
-      padding: 0.7rem 0.25rem;
+      font-size: 1.425rem;
+      padding: 0.65rem 0.25rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .nav-links a:last-child {
       border-bottom: none;
-    }
-
-    /* Havolalar navbatma-navbat chiqadi */
-    header.menu-open .nav-links a {
-      animation: menuItemIn 0.25s ease-out both;
-    }
-
-    header.menu-open .nav-links a:nth-child(1) {
-      animation-delay: 0.03s;
-    }
-
-    header.menu-open .nav-links a:nth-child(2) {
-      animation-delay: 0.07s;
-    }
-
-    header.menu-open .nav-links a:nth-child(3) {
-      animation-delay: 0.11s;
-    }
-
-    /* O'ngga tekislangani uchun havolalar ham o'ngdan suriladi */
-    @keyframes menuItemIn {
-      from {
-        opacity: 0;
-        transform: translateX(12px);
-      }
-      to {
-        opacity: 1;
-        transform: none;
-      }
     }
   }
 
@@ -341,10 +313,6 @@
     .menu-icon span,
     .nav-links {
       transition: none;
-    }
-
-    header.menu-open .nav-links a {
-      animation: none;
     }
   }
 
