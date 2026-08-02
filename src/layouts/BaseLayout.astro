@@ -61,14 +61,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <!-- Fonts (non-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" /></noscript>
+  <!-- Ichki sahifalarda faqat Poppins ishlatiladi (tugmalar). Syne va Caveat
+       so'ralardi, lekin bu sahifalarda hech qayerda qo'llanilmaydi. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" /></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": article ? "Article" : "WebSite",
+    "@type": article ? "Article" : "WebPage",
     "name": title,
     "url": canonicalURL,
     "description": description,
@@ -96,6 +98,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "url": "https://darslinker.uz"
       },
       "sameAs": [
+        "https://www.linkedin.com/in/fayzulloh-shavkatov-7a60b3367/",
         "https://t.me/shavkatov_ff",
         "https://instagram.com/shavkatov.io"
       ]

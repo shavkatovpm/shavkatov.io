@@ -134,7 +134,9 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
 </BaseLayout>
 
 <script>
-  const setLang = (lang: string) => {
+  import { onLang } from '../../scripts/lang';
+
+  onLang((lang) => {
     document.querySelectorAll('[data-uz]').forEach((el) => {
       const e = el as HTMLElement;
       if (e.dataset.en !== undefined) {
@@ -147,9 +149,7 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
     const contentEn = document.querySelector('.content-en') as HTMLElement;
     if (contentUz) contentUz.style.display = lang === 'en' ? 'none' : 'block';
     if (contentEn) contentEn.style.display = lang === 'en' ? 'block' : 'none';
-  };
-  setLang(localStorage.getItem('lang') || 'uz');
-  document.addEventListener('langchange', (e: any) => setLang(e.detail));
+  });
 </script>
 
 <style>

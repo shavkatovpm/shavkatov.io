@@ -87,7 +87,7 @@ AI qidiruv jarayoni: foydalanuvchi → so'rov → AI internetga kiradi → 3-5 t
 | Vaqt natijasi | 3-6 oy | 1-3 oy (tezroq, lekin chayqaluvchan) |
 | O'lchash | Search Console | Hozircha qiyin — yangi yo'nalish |
 
-E'tiborli nuqta: AEO klassik SEO'ni *almashtirmaydi*. U ustiga qo'shimcha qatlam. Texnik fundament, mahalliy ko'rinish, kontent sifati — bularsiz AEO ham ishlamaydi. Agar [SEO asoslari](/blog/seo-nima-ozbekiston-2026) bilan tanish bo'lmasangiz, oldin uni o'qib oling.
+E'tiborli nuqta: AEO klassik SEO'ni *almashtirmaydi*. U ustiga qo'shimcha qatlam. Texnik fundament, mahalliy ko'rinish, kontent sifati — bularsiz AEO ham ishlamaydi. Agar [SEO asoslari](/blog/seo-nima-ozbekiston-2026/) bilan tanish bo'lmasangiz, oldin uni o'qib oling.
 
 ## AEO 3 ta ustunga tayanadi
 
@@ -231,7 +231,7 @@ Three key differences:
 | Time to result | 3-6 months | 1-3 months (faster but more volatile) |
 | Measurement | Search Console | Still hard — emerging field |
 
-Important: AEO doesn't *replace* classic SEO. It's a layer on top. Technical foundation, local visibility, content quality — without those AEO won't work either. If you haven't covered the [SEO basics](/blog/seo-nima-ozbekiston-2026) yet, read that first.
+Important: AEO doesn't *replace* classic SEO. It's a layer on top. Technical foundation, local visibility, content quality — without those AEO won't work either. If you haven't covered the [SEO basics](/blog/seo-nima-ozbekiston-2026/) yet, read that first.
 
 ## AEO rests on 3 pillars
 

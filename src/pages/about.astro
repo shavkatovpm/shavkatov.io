@@ -68,20 +68,19 @@ import CTA from '../components/CTA.astro';
 </BaseLayout>
 
 <script>
-  const backLink = document.getElementById('backLink');
+  import { onLang } from '../scripts/lang';
 
-  const setLang = (lang: string) => {
+  onLang((lang) => {
     document.querySelectorAll('.about-uz').forEach((el) => {
       (el as HTMLElement).style.display = lang === 'en' ? 'none' : 'block';
     });
     document.querySelectorAll('.about-en').forEach((el) => {
       (el as HTMLElement).style.display = lang === 'en' ? 'block' : 'none';
     });
+    // Har safar qaytadan qidiramiz — navigatsiyadan keyin tugun almashadi
+    const backLink = document.getElementById('backLink');
     if (backLink) backLink.innerHTML = lang === 'en' ? '&larr; Back' : '&larr; Ortga';
-  };
-
-  setLang(localStorage.getItem('lang') || 'uz');
-  document.addEventListener('langchange', (e: any) => setLang(e.detail));
+  });
 </script>
 
 <style>

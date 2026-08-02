@@ -1,12 +1,86 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+
+// Sahifadagi haqiqiy mazmun asosida — hech qanday o'ylab topilgan narx yoki raqam yo'q
+const provider = {
+  '@type': 'Person',
+  '@id': 'https://shavkatov.io/#person',
+  name: "Shavkatov Fayzulloh",
+  jobTitle: 'SEO, AEO & GEO Specialist',
+  url: 'https://shavkatov.io/',
+  image: 'https://shavkatov.io/og-image.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Tashkent',
+    addressCountry: 'UZ',
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/fayzulloh-shavkatov-7a60b3367/',
+    'https://t.me/shavkatov_ff',
+    'https://instagram.com/shavkatov.io',
+  ],
+};
+
+const deliverables = [
+  'Texnik va kontent SEO auditi',
+  "AEO tayyorligi — AI'larda qanday ko'rinasiz",
+  'Raqobatchi tahlili (3-5 ta loyiha)',
+  "Kalit so'z va kontent strategiyasi",
+  '90 kunlik bajariladigan reja',
+  'Yakuniy yig‘ilish va savol-javob',
+];
+
+const servicesSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': 'https://shavkatov.io/services/#service',
+      name: 'SEO va AEO audit + strategiya',
+      serviceType: 'Search Engine Optimization',
+      description:
+        "Saytingiz hozir qayerda turibdi, qayerga borishi mumkin va 90 kun ichida nima qilish kerakligini aniq aytib beraman.",
+      url: 'https://shavkatov.io/services/',
+      provider,
+      areaServed: { '@type': 'Country', name: 'Uzbekistan' },
+      availableLanguage: ['uz', 'en'],
+      audience: [
+        { '@type': 'Audience', audienceType: 'Mahalliy biznes' },
+        { '@type': 'Audience', audienceType: 'E-commerce' },
+        { '@type': 'Audience', audienceType: 'Startaplar' },
+        { '@type': 'Audience', audienceType: 'Agentliklar' },
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'SEO va AEO audit + strategiya',
+        itemListElement: deliverables.map((name) => ({
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name },
+        })),
+      },
+      termsOfService: 'https://shavkatov.io/services/',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://shavkatov.io/services/#breadcrumb',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Bosh sahifa', item: 'https://shavkatov.io/' },
+        { '@type': 'ListItem', position: 2, name: 'Xizmatlar', item: 'https://shavkatov.io/services/' },
+      ],
+    },
+  ],
+};
 ---
 
 <BaseLayout
   title="SEO va AEO xizmatlar — Audit, strategiya va ijro | Shavkatov"
   description="SEO va AEO xizmatlar: sayt auditi, kalit so'z strategiyasi va 90 kunlik aniq ijro rejasi. Toshkentdan, Darslinker.uz tajribasi asosida."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+  </Fragment>
+
   <section class="services" transition:animate="fade">
     <header class="services-header">
       <h1 id="servicesH1" data-uz="SEO va AEO xizmatlar" data-en="SEO & AEO Services">SEO va AEO xizmatlar</h1>
@@ -104,16 +178,16 @@ import CTA from '../components/CTA.astro';
 </BaseLayout>
 
 <script>
-  const setLang = (lang: string) => {
+  import { onLang } from '../scripts/lang';
+
+  onLang((lang) => {
     document.querySelectorAll('[data-uz]').forEach((el) => {
       const e = el as HTMLElement;
       if (e.dataset.en !== undefined) {
         e.textContent = lang === 'en' ? (e.dataset.en || '') : (e.dataset.uz || '');
       }
     });
-  };
-  setLang(localStorage.getItem('lang') || 'uz');
-  document.addEventListener('langchange', (e: any) => setLang(e.detail));
+  });
 </script>
 
 <style>

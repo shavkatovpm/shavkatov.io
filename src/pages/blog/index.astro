@@ -24,7 +24,7 @@ const formatDate = (d: Date, lang: 'uz' | 'en') => {
     {posts.length > 0 ? (
       <div class="posts-grid">
         {posts.map((post) => (
-          <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="post-card">
+          <a href={`/blog/${post.id.replace(/\.md$/, '')}/`} class="post-card">
             <div class="post-date">
               <time
                 datetime={post.data.date.toISOString()}
@@ -46,7 +46,9 @@ const formatDate = (d: Date, lang: 'uz' | 'en') => {
 </BaseLayout>
 
 <script>
-  const setLang = (lang: string) => {
+  import { onLang } from '../../scripts/lang';
+
+  onLang((lang) => {
     document.querySelectorAll('.post-title, .post-description, .post-date time').forEach((el) => {
       const e = el as HTMLElement;
       if (e.dataset.en !== undefined && e.dataset.uz !== undefined) {
@@ -55,9 +57,7 @@ const formatDate = (d: Date, lang: 'uz' | 'en') => {
     });
     const noPosts = document.getElementById('noPosts');
     if (noPosts) noPosts.textContent = lang === 'en' ? 'No posts yet.' : 'Hozircha maqolalar yo\'q.';
-  };
-  setLang(localStorage.getItem('lang') || 'uz');
-  document.addEventListener('langchange', (e: any) => setLang(e.detail));
+  });
 </script>
 
 <style>

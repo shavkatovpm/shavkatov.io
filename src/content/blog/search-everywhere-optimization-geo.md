@@ -44,7 +44,7 @@ Search Everywhere Optimization — odamlar javobni endi faqat Google'dan emas, b
 
 Avval rasm sodda edi: Google'da top'ga chiqasiz — tamom. Endi "discovery" (brendni topish jarayoni) tarqoq holatga keldi. Bir odam ertalab Google'da qidiradi, tushlikda ChatGPT'dan so'raydi, kechqurun YouTube'da sharh ko'radi, qaror qabul qilishdan oldin Reddit'ga kirib real tajribani o'qiydi. Siz bu zanjirning faqat bitta bo'g'inida bo'lsangiz — yo'qotasiz.
 
-[AEO](/blog/aeo-nima-chatgpt-davri) va [SEO asoslari](/blog/seo-nima-ozbekiston-2026) bu rasmning bir qismi — bu post ularni butun manzaraga ulaydi.
+[AEO](/blog/aeo-nima-chatgpt-davri/) va [SEO asoslari](/blog/seo-nima-ozbekiston-2026/) bu rasmning bir qismi — bu post ularni butun manzaraga ulaydi.
 
 ## Qidiruv qayerga tarqaldi — raqamlar
 
@@ -215,7 +215,7 @@ Search Everywhere Optimization is the strategy of making your brand **visible ev
 
 The picture used to be simple: rank on Google, done. Now "discovery" (how people find a brand) has scattered. Someone searches Google in the morning, asks ChatGPT at lunch, watches a YouTube review in the evening, and before deciding, reads real experiences on Reddit. If you're present in only one link of that chain — you lose.
 
-[AEO](/blog/aeo-nima-chatgpt-davri) and [SEO basics](/blog/seo-nima-ozbekiston-2026) are parts of this picture — this post ties them into the full landscape.
+[AEO](/blog/aeo-nima-chatgpt-davri/) and [SEO basics](/blog/seo-nima-ozbekiston-2026/) are parts of this picture — this post ties them into the full landscape.
 
 ## Where search scattered — the numbers
 

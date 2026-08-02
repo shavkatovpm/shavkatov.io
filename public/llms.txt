@@ -20,14 +20,15 @@ Shavkatov Fayzulloh Furqat o'g'li applies the same SEO/AEO/GEO playbook he tests
 
 ## Site
 
-- [Homepage](https://shavkatov.io): SEO/AEO/GEO consultancy positioning and overview
-- [About](https://shavkatov.io/about): Background, approach, and credentials
-- [Services](https://shavkatov.io/services): SEO and AEO service packages with scope and deliverables
-- [Blog](https://shavkatov.io/blog): SEO/AEO insights, case studies, and industry news in Uzbek and English
+- [Homepage](https://shavkatov.io/): SEO/AEO/GEO consultancy positioning and overview
+- [About](https://shavkatov.io/about/): Background, approach, and credentials
+- [Services](https://shavkatov.io/services/): SEO and AEO service packages with scope and deliverables
+- [Blog](https://shavkatov.io/blog/): SEO/AEO insights, case studies, and industry news in Uzbek and English
 
 ## Contact
 
 - [Telegram](https://t.me/shavkatov_ff): Primary channel for inquiries and consultations
+- [LinkedIn](https://www.linkedin.com/in/fayzulloh-shavkatov-7a60b3367/): Professional profile and background
 - [Instagram](https://instagram.com/shavkatov.io): Updates, content, and behind-the-scenes
 
 ## Content Approach

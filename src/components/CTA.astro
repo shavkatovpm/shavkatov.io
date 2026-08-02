@@ -4,6 +4,9 @@ interface Props {
 }
 
 const { variant = 'card' } = Astro.props;
+
+// Xizmatlar sahifasining o'zida o'ziga havola bermaymiz
+const onServicesPage = Astro.url.pathname.startsWith('/services');
 ---
 
 <div class={`cta cta--${variant}`} data-cta>
@@ -13,21 +16,28 @@ const { variant = 'card' } = Astro.props;
   <p class="cta-sub" data-uz="30 daqiqalik bepul konsultatsiya — Telegram'da yozing." data-en="30 minutes free consultation — message me on Telegram.">
     30 daqiqalik bepul konsultatsiya — Telegram'da yozing.
   </p>
-  <a class="cta-btn" href="https://t.me/shavkatov_ff" target="_blank" rel="noopener noreferrer">
-    <span data-uz="Telegram'ga yozish" data-en="Message on Telegram">Telegram'ga yozish</span>
-    <span aria-hidden="true">→</span>
-  </a>
+  <div class="cta-actions">
+    <a class="cta-btn" href="https://t.me/shavkatov_ff" target="_blank" rel="noopener noreferrer">
+      <span data-uz="Telegram'ga yozish" data-en="Message on Telegram">Telegram'ga yozish</span>
+      <span aria-hidden="true">→</span>
+    </a>
+    {!onServicesPage && (
+      <a class="cta-link" href="/services/">
+        <span data-uz="Xizmatlar va narxlar" data-en="Services and pricing">Xizmatlar va narxlar</span>
+      </a>
+    )}
+  </div>
 </div>
 
 <script>
-  const setCtaLang = (lang: string) => {
+  import { onLang } from '../scripts/lang';
+
+  onLang((lang) => {
     document.querySelectorAll('[data-cta] [data-uz]').forEach((el) => {
       const e = el as HTMLElement;
       e.textContent = lang === 'en' ? (e.dataset.en || '') : (e.dataset.uz || '');
     });
-  };
-  setCtaLang(localStorage.getItem('lang') || 'uz');
-  document.addEventListener('langchange', (e: any) => setCtaLang(e.detail));
+  });
 </script>
 
 <style>
@@ -55,6 +65,26 @@ const { variant = 'card' } = Astro.props;
     font-size: 0.9rem;
     margin: 0 0 1rem;
     line-height: 1.5;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+  }
+
+  .cta-link {
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .cta-link:hover {
+    color: var(--color-text);
+    border-color: rgba(255, 255, 255, 0.5);
   }
 
   .cta-btn {

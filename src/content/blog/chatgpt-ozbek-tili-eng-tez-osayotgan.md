@@ -44,7 +44,7 @@ Bir necha yil oldin bu yangilik "qiziq, lekin bizga aloqasi yo'q" bo'lardi. Endi
 
 Bu yerda kulgili tomoni ham bor: ko'p biznes egasi hali "ChatGPT'ni kim ishlatadi, mijozlarim Instagram'da" deydi — shu payt mijozi allaqachon ChatGPT'dan "[shahar]da qaysi restoran yaxshi" deb so'rab, javobda uning nomi chiqmagani uchun raqobatchiga ketmoqda.
 
-Bu ilgari yozgan ikkita postga bevosita bog'liq: [AEO nima](/blog/aeo-nima-chatgpt-davri) va [Search Everywhere Optimization](/blog/search-everywhere-optimization-geo). Ikkalasida ham asosiy fikr — qidiruv Google'dan tarqalib ketdi. Bu yangilik shu fikrni tasdiqlaydigan, O'zbekistonga xos, aniq dalil.
+Bu ilgari yozgan ikkita postga bevosita bog'liq: [AEO nima](/blog/aeo-nima-chatgpt-davri/) va [Search Everywhere Optimization](/blog/search-everywhere-optimization-geo/). Ikkalasida ham asosiy fikr — qidiruv Google'dan tarqalib ketdi. Bu yangilik shu fikrni tasdiqlaydigan, O'zbekistonga xos, aniq dalil.
 
 ## Nima qilish kerak
 
@@ -78,7 +78,7 @@ A few years ago, this news would have been "interesting, but not relevant to us.
 
 There's a slightly funny side to this too: plenty of business owners still say "who even uses ChatGPT, my customers are on Instagram" — while their customer is already asking ChatGPT "which restaurant is good in [city]" in Uzbek, and going to a competitor because that answer never mentioned them.
 
-This connects directly to two earlier posts: [What is AEO](/blog/aeo-nima-chatgpt-davri) and [Search Everywhere Optimization](/blog/search-everywhere-optimization-geo). Both make the same core point — search has scattered beyond Google. This news is a concrete, Uzbekistan-specific data point confirming it.
+This connects directly to two earlier posts: [What is AEO](/blog/aeo-nima-chatgpt-davri/) and [Search Everywhere Optimization](/blog/search-everywhere-optimization-geo/). Both make the same core point — search has scattered beyond Google. This news is a concrete, Uzbekistan-specific data point confirming it.
 
 ## What to do
 
