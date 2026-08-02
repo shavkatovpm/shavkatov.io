@@ -319,18 +319,12 @@ import '../styles/global.css';
     fill: url(#ig-gradient);
   }
 
-  :global(header) {
-    animation: heroIn 0.25s ease-out both;
-  }
-
   /* Kirish animatsiyasi — JS'siz, birinchi paint darhol bo'ladi */
   @keyframes heroIn {
     from {
-      opacity: 0;
       filter: blur(8px);
     }
     to {
-      opacity: 1;
       filter: blur(0px);
     }
   }
@@ -338,16 +332,14 @@ import '../styles/global.css';
   /* Ichki sahifadan qaytganda animatsiya takrorlanmaydi */
   :global(body.no-intro) .hero-tagline,
   :global(body.no-intro) .hero-name,
-  :global(body.no-intro) .hero-links,
-  :global(body.no-intro header) {
+  :global(body.no-intro) .hero-links {
     animation: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .hero-tagline,
     .hero-name,
-    .hero-links,
-    :global(header) {
+    .hero-links {
       animation: none;
     }
   }
