@@ -7,7 +7,7 @@ const provider = {
   '@type': 'Person',
   '@id': 'https://shavkatov.io/#person',
   name: "Shavkatov Fayzulloh",
-  jobTitle: 'SEO, AEO & GEO Specialist',
+  jobTitle: 'SEO, GEO & AEO Specialist',
   url: 'https://shavkatov.io/',
   image: 'https://shavkatov.io/og-image.jpg',
   address: {
@@ -24,6 +24,7 @@ const provider = {
 
 const deliverables = [
   'Texnik va kontent SEO auditi',
+  "GEO auditi — AI javoblaridagi ko'rinish va brend mentionlari",
   "AEO tayyorligi — AI'larda qanday ko'rinasiz",
   'Raqobatchi tahlili (3-5 ta loyiha)',
   "Kalit so'z va kontent strategiyasi",
@@ -37,8 +38,8 @@ const servicesSchema = {
     {
       '@type': 'Service',
       '@id': 'https://shavkatov.io/services/#service',
-      name: 'SEO va AEO audit + strategiya',
-      serviceType: 'Search Engine Optimization',
+      name: 'SEO, GEO va AEO audit + strategiya',
+      serviceType: ['Search Engine Optimization', 'Generative Engine Optimization', 'Answer Engine Optimization'],
       description:
         "Saytingiz hozir qayerda turibdi, qayerga borishi mumkin va 90 kun ichida nima qilish kerakligini aniq aytib beraman.",
       url: 'https://shavkatov.io/services/',
@@ -53,7 +54,7 @@ const servicesSchema = {
       ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'SEO va AEO audit + strategiya',
+        name: 'SEO, GEO va AEO audit + strategiya',
         itemListElement: deliverables.map((name) => ({
           '@type': 'Offer',
           itemOffered: { '@type': 'Service', name },
@@ -74,8 +75,8 @@ const servicesSchema = {
 ---
 
 <BaseLayout
-  title="SEO va AEO xizmatlar — Audit, strategiya va ijro | Shavkatov"
-  description="SEO va AEO xizmatlar: sayt auditi, kalit so'z strategiyasi va 90 kunlik aniq ijro rejasi. Toshkentdan, Darslinker.uz tajribasi asosida."
+  title="SEO, GEO va AEO xizmatlari — Audit va strategiya | Shavkatov"
+  description="SEO, GEO va AEO xizmatlari: Google va AI qidiruvidagi ko'rinish auditi, kontent strategiyasi va 90 kunlik aniq ijro rejasi."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
@@ -83,7 +84,7 @@ const servicesSchema = {
 
   <section class="services" transition:animate="fade">
     <header class="services-header">
-      <h1 id="servicesH1" data-uz="SEO va AEO xizmatlar" data-en="SEO & AEO Services">SEO va AEO xizmatlar</h1>
+      <h1 id="servicesH1" data-uz="SEO, GEO va AEO xizmatlari" data-en="SEO, GEO & AEO Services">SEO, GEO va AEO xizmatlari</h1>
       <p class="lead" id="servicesLead"
         data-uz="Bizneslarni Google va AI qidiruv tizimlarida topga chiqaraman."
         data-en="I bring businesses to the top in Google and AI search."
@@ -104,9 +105,9 @@ const servicesSchema = {
     <div class="package">
       <div class="package-tag" data-uz="Asosiy xizmat" data-en="Main service">Asosiy xizmat</div>
       <h2 class="package-title"
-        data-uz="SEO va AEO audit + strategiya"
-        data-en="SEO & AEO audit + strategy"
-      >SEO va AEO audit + strategiya</h2>
+        data-uz="SEO, GEO va AEO audit + strategiya"
+        data-en="SEO, GEO & AEO audit + strategy"
+      >SEO, GEO va AEO audit + strategiya</h2>
       <p class="package-sub"
         data-uz="Saytingiz hozir qayerda turibdi, qayerga borishi mumkin va 90 kun ichida nima qilish kerakligini aniq aytib beraman."
         data-en="Where your site stands now, where it can go, and exactly what to do in 90 days."
@@ -116,6 +117,7 @@ const servicesSchema = {
 
       <ul class="package-list">
         <li data-uz="Texnik va kontent SEO auditi" data-en="Technical & content SEO audit">Texnik va kontent SEO auditi</li>
+        <li data-uz="GEO auditi — AI javoblaridagi ko'rinish va brend mentionlari" data-en="GEO audit — visibility and brand mentions in AI answers">GEO auditi — AI javoblaridagi ko'rinish va brend mentionlari</li>
         <li data-uz="AEO tayyorligi — AI'larda qanday ko'rinasiz" data-en="AEO readiness — how you appear in AI search">AEO tayyorligi — AI'larda qanday ko'rinasiz</li>
         <li data-uz="Raqobatchi tahlili (3-5 ta loyiha)" data-en="Competitor analysis (3-5 projects)">Raqobatchi tahlili (3-5 ta loyiha)</li>
         <li data-uz="Kalit so'z va kontent strategiyasi" data-en="Keyword & content strategy">Kalit so'z va kontent strategiyasi</li>
