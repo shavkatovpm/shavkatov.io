@@ -11,6 +11,7 @@ const blog = defineCollection({
     date: z.coerce.date(),
     lastUpdated: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    image: z.string().optional(),
     // AEO fields
     tldr: z.string().optional(),
     tldr_en: z.string().optional(),

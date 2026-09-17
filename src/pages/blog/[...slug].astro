@@ -35,9 +35,11 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
 <BaseLayout
   title={`${post.data.title} - Shavkatov`}
   description={post.data.description}
+  ogImage={post.data.image}
   article={true}
 >
   <Fragment slot="head">
+    <meta name="robots" content="max-image-preview:large" />
     <meta property="article:published_time" content={post.data.date.toISOString()} />
     {updated && <meta property="article:modified_time" content={updated.toISOString()} />}
     <meta property="article:author" content="Shavkatov Fayzulloh" />
@@ -111,9 +113,11 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
       <section class="faq">
         <h2 id="faqTitle" data-uz="Tez-tez beriladigan savollar" data-en="Frequently asked questions">Tez-tez beriladigan savollar</h2>
         {post.data.faq.map((item) => (
-          <details class="faq-item" name="post-faq">
+          <details class="faq-item">
             <summary>{item.question}</summary>
-            <p>{item.answer}</p>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
           </details>
         ))}
       </section>
@@ -136,6 +140,69 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
 <script>
   import { onLang } from '../../scripts/lang';
 
+  const setupFAQ = () => {
+    const items = Array.from(document.querySelectorAll<HTMLDetailsElement>('.faq-item'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const closeItem = (item: HTMLDetailsElement) => {
+      if (!item.open || item.dataset.animating === 'true') return;
+      const answer = item.querySelector<HTMLElement>('.faq-answer');
+      if (!answer || reduceMotion) {
+        item.open = false;
+        return;
+      }
+
+      item.dataset.animating = 'true';
+      const animation = answer.animate(
+        [
+          { height: `${answer.scrollHeight}px`, opacity: 1 },
+          { height: '0px', opacity: 0 },
+        ],
+        { duration: 240, easing: 'ease-in-out' }
+      );
+      animation.onfinish = () => {
+        item.open = false;
+        delete item.dataset.animating;
+      };
+      animation.oncancel = () => delete item.dataset.animating;
+    };
+
+    items.forEach((item) => {
+      if (item.dataset.faqReady === 'true') return;
+      item.dataset.faqReady = 'true';
+      const summary = item.querySelector('summary');
+      const answer = item.querySelector<HTMLElement>('.faq-answer');
+      if (!summary || !answer) return;
+
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (item.dataset.animating === 'true') return;
+
+        if (item.open) {
+          closeItem(item);
+          return;
+        }
+
+        items.forEach((other) => {
+          if (other !== item) closeItem(other);
+        });
+        item.open = true;
+        if (reduceMotion) return;
+
+        item.dataset.animating = 'true';
+        const animation = answer.animate(
+          [
+            { height: '0px', opacity: 0 },
+            { height: `${answer.scrollHeight}px`, opacity: 1 },
+          ],
+          { duration: 280, easing: 'ease-out' }
+        );
+        animation.onfinish = () => delete item.dataset.animating;
+        animation.oncancel = () => delete item.dataset.animating;
+      });
+    });
+  };
+
   onLang((lang) => {
     document.querySelectorAll('[data-uz]').forEach((el) => {
       const e = el as HTMLElement;
@@ -150,6 +217,9 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
     if (contentUz) contentUz.style.display = lang === 'en' ? 'none' : 'block';
     if (contentEn) contentEn.style.display = lang === 'en' ? 'block' : 'none';
   });
+
+  document.addEventListener('astro:page-load', setupFAQ);
+  setupFAQ();
 </script>
 
 <style>
@@ -345,15 +415,20 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
     content: '+';
     float: right;
     color: var(--color-secondary);
-    transition: transform 0.2s ease;
+    transition: transform 0.24s ease;
   }
 
   .faq-item[open] summary::after {
-    content: '−';
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    overflow: hidden;
   }
 
   .faq-item p {
     margin-top: 0.75rem;
+    margin-bottom: 0;
     color: var(--color-secondary);
     line-height: 1.7;
   }

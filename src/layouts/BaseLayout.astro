@@ -74,6 +74,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     "name": title,
     "url": canonicalURL,
     "description": description,
+    ...(article ? { "image": new URL(ogImage, Astro.site).href } : {}),
     "author": {
       "@type": "Person",
       "name": "Shavkatov Fayzulloh",
