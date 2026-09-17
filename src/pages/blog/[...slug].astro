@@ -37,6 +37,8 @@ const updatedEn = updated ? formatDate(updated, 'en') : null;
   description={post.data.description}
   ogImage={post.data.image}
   article={true}
+  datePublished={post.data.date.toISOString()}
+  dateModified={updated?.toISOString()}
 >
   <Fragment slot="head">
     <meta name="robots" content="max-image-preview:large" />

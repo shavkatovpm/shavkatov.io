@@ -9,13 +9,17 @@ interface Props {
   description?: string;
   ogImage?: string;
   article?: boolean;
+  datePublished?: string;
+  dateModified?: string;
 }
 
 const {
   title,
   description = "SEO, GEO va AEO mutaxassisi — bizneslarni Google qidiruvi va AI javoblarida ko'rinadigan qilaman.",
   ogImage = "/og-image.jpg",
-  article = false
+  article = false,
+  datePublished,
+  dateModified
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -71,10 +75,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": article ? "Article" : "WebPage",
-    "name": title,
+    ...(article ? { "headline": title } : { "name": title }),
     "url": canonicalURL,
     "description": description,
     ...(article ? { "image": new URL(ogImage, Astro.site).href } : {}),
+    ...(datePublished ? { "datePublished": datePublished } : {}),
+    ...(dateModified ? { "dateModified": dateModified } : {}),
     "author": {
       "@type": "Person",
       "name": "Shavkatov Fayzulloh",
@@ -104,12 +110,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "https://instagram.com/shavkatov.io"
       ]
     },
-    ...(article ? {} : {
-      "publisher": {
-        "@type": "Person",
-        "name": "Shavkatov Fayzulloh"
-      }
-    })
+    "publisher": {
+      "@type": "Person",
+      "name": "Shavkatov Fayzulloh"
+    }
   })} />
 
   <!-- Microsoft Clarity (deferred until after load) -->
